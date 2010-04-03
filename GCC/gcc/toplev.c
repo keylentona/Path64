@@ -1206,7 +1206,7 @@ print_version (FILE *file, const char *indent)
   fprintf (file,
 	   file == stderr ? _(fmt1) : fmt1,
 	   indent, *indent != 0 ? " " : "",
-	   lang_hooks.name, version_string, TARGET_NAME,
+	   lang_hooks.name, version_string, GCC_TO_STRING(TARGET_NAME),
 	   indent, __VERSION__);
   fprintf (file,
 	   file == stderr ? _(fmt2) : fmt2,

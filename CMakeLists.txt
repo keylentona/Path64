@@ -1,20 +1,21 @@
-project(PATH64)
-cmake_minimum_required(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(GCCXMLComplete)
 
-set(DEBUG_BUILD_FLAGS "-W -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition -Wmissing-format-attribute" CACHE INTERNAL "" FORCE)
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} ${DEBUG_BUILD_FLAGS}" CACHE STRING "" FORCE)
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${DEBUG_BUILD_FLAGS}" CACHE STRING "" FORCE)
+# Tell GCC_XML that we are providing gccxml_cc1plus for it.
+SET(GCCXML_NATIVE_CC1PLUS 1)
 
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
-include(ConfigureChecks)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+#SET(CMAKE_C_FLAGS "$(BUILD_OPTIMIZE) -DTARG_X8664 -DKEY -DFE_GNU_4_2_0   -DIs_True_On -W -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition -Wmissing-format-attribute -DHAVE_CONFIG_H")
 
-include_directories(AFTER SYSTEM ${CMAKE_CURRENT_BINARY_DIR})
 
-add_definitions(-DTARG_X8664 -DKEY -DFE_GNU_4_2_0 -DIs_True_On -DHAVE_CONFIG_H)
+# Place both gccxml_cc1plus and the GCC_XML executables next to each
+# other.
+SET(EXECUTABLE_OUTPUT_PATH "${GCCXMLComplete_BINARY_DIR}/bin" CACHE PATH
+  "Single output directory for all executables.")
+MARK_AS_ADVANCED(EXECUTABLE_OUTPUT_PATH LIBRARY_OUTPUT_PATH)
 
-add_subdirectory(ekopath-gcc-4.2.0)
-add_subdirectory(libspin)
-add_subdirectory(pathscale)
+# Tell GCC and GCC-XML where to install relative to the CMAKE_INSTALL_PREFIX.
+SET(GCCXML_INSTALL_ROOT)
+
+# Build GCC and GCC_XML.
+SUBDIRS(GCC)

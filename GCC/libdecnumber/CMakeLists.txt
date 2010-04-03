@@ -1,3 +1,7 @@
+
+FILE(COPY ${GCC_SOURCE_DIR}/ungenerated/common/gstdint.h DESTINATION ${GCC_BINARY_DIR}/libdecnumber)
+FILE(COPY ${GCC_SOURCE_DIR}/ungenerated/common/gstdint.h DESTINATION ${GCC_BINARY_DIR}/gcc)
+
 INCLUDE_DIRECTORIES(BEFORE
   ${GCC_SOURCE_DIR}/include
   ${GCC_SOURCE_DIR}/libdecnumber/include

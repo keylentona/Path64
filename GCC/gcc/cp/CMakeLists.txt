@@ -22,10 +22,10 @@ IF(CYGWIN)
 ENDIF(CYGWIN)
 
 INCLUDE_DIRECTORIES(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
-CONFIGURE_FILE(${GCC_SOURCE_DIR}/gcc/cp/gccxml_prefix.h.in
-               ${GCC_BINARY_DIR}/gcc/cp/gccxml_prefix.h @ONLY IMMEDIATE)
+CONFIGURE_FILE(${GCC_SOURCE_DIR}/gcc/path64_prefix.h.in
+               ${GCC_BINARY_DIR}/gcc/cp/path64_prefix.h @ONLY IMMEDIATE)
 
-ADD_EXECUTABLE(cc142
+ADD_EXECUTABLE(cc1plus42
      ${cxx_target_srcs}         ../attribs.c        ../c-common.c    ../c-cppbuiltin.c
             ../c-dump.c        ../c-format.c      ../c-gimplify.c       ../c-incpath.c
              ../c-lex.c           ../c-omp.c          ../c-opts.c           ../c-pch.c
@@ -45,7 +45,10 @@ ADD_EXECUTABLE(cc142
    # source file count: 53
   )
 
-TARGET_LINK_LIBRARIES(cc1plus42 backend cpp decnumber iberty)
+
+TARGET_LINK_LIBRARIES(cc1plus42 backend cpp decnumber iberty spin)
+
+
 
 # Use the "-lx" option to disable map file generation on Borland.
 # This avoids the "Fatal: Access violation.  Link terminated." error.

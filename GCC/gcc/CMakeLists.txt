@@ -502,6 +502,7 @@ SET_SOURCE_FILES_PROPERTIES(toplev.c
 #-----------------------------------------------------------------------------
 # Compiler backend library.
 
+
 ADD_LIBRARY(backend
                      alias.c              alloc-pool.c       backend-print-rtl.c             backend-rtl.c
                backend-vec.c              bb-reorder.c                  bitmap.c                 bt-load.c
@@ -569,7 +570,65 @@ ADD_LIBRARY(backend
    ${GCC_BINARY_DIR}/gcc/insn-attr.h         ${GCC_BINARY_DIR}/gcc/genrtl.h
    ${GCC_BINARY_DIR}/gcc/gcov-iov.h
   # Seen in CMakeLists.txt: 227 files listed for libbackend.
+
+  # Files that are missing in list above
+  double-int.c
+  tree-chrec.c
+  tree-data-ref.c
+  tree-scalar-evolution.c
 )
+
+
+CONFIGURE_FILE(${GCC_SOURCE_DIR}/gcc/path64_prefix.h.in
+               ${GCC_BINARY_DIR}/gcc/path64_prefix.h @ONLY IMMEDIATE)
+
+
+ADD_EXECUTABLE(cc142
+               c-lang.c
+               c-typeck.c
+               c-decl.c
+               c-parser.c
+               c-convert.c
+               c-objc-common.c
+               stub-objc.c
+               attribs.c
+               c-errors.c
+               c-lex.c
+               c-pragma.c
+               c-aux-info.c
+               c-common.c
+               c-opts.c
+               c-format.c
+               c-semantics.c
+               c-incpath.c
+               cppdefault.c
+               c-ppoutput.c
+               c-cppbuiltin.c
+               prefix.c
+               c-dump.c
+               c-pch.c
+               c-gimplify.c
+               tree-mudflap.c
+               c-pretty-print.c
+               c-omp.c
+               main.c
+
+               dummy-checksum.c
+               )
+               
+
+TARGET_LINK_LIBRARIES(cc142 backend cpp decnumber iberty spin)
+
+SET_TARGET_PROPERTIES(cc142
+                      PROPERTIES
+                      RUNTIME_OUTPUT_DIRECTORY ${GCC_EXECUTABLE_OUTPUT_PATH})
+
+
+# Install cc142
+INSTALL(TARGETS cc142
+  RUNTIME DESTINATION ${PATH64_INSTALL_ROOT}bin
+  ${PATH64_INSTALL_COMPONENT_RUNTIME_EXECUTABLE})
+
 
 ## changed pending verification
 #ADD_LIBRARY(backend

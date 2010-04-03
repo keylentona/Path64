@@ -3,8 +3,9 @@ INCLUDE_DIRECTORIES(BEFORE
   ${GCC_SOURCE_DIR}/libcpp/include
   ${GCC_BINARY_DIR}/libcpp
   )
-CONFIGURE_FILE(${GCC_SOURCE_DIR}/libcpp/localedir.h.in
-               ${GCC_BINARY_DIR}/libcpp/localedir.h)
+
+FILE(COPY ${GCC_SOURCE_DIR}/ungenerated/common/localedir.h DESTINATION ${GCC_BINARY_DIR}/libcpp)
+
 SET(cpp_SRCS
         charset.c   directives.c       errors.c         expr.c
           files.c  identifiers.c         init.c          lex.c

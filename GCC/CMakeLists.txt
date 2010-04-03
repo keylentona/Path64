@@ -37,6 +37,18 @@ ELSE(CMAKE_C_COMPILER MATCHES "cl")
   ENDIF(CMAKE_C_COMPILER MATCHES "bcc32")
 ENDIF(CMAKE_C_COMPILER MATCHES "cl")
 
-ADD_DEFINITIONS(-DALMOST_STDC)
+ADD_DEFINITIONS(-DALMOST_STDC
+                -DTARG_X8664
+                -DKEY
+                -DFE_GNU_4_2_0
+                -DIs_True_On
+                -DHAVE_CONFIG_H
+                -W
+                -Wall
+                -Wwrite-strings
+                -Wstrict-prototypes
+                -Wmissing-prototypes
+                -Wold-style-definition
+                -Wmissing-format-attribute)
 
 SUBDIRS(config_cmake libiberty libdecnumber libcpp libspin gcc)
