@@ -1,0 +1,23 @@
+#ifndef __pathscale_defs_h
+#define __pathscale_defs_h
+#define PSC_MAJOR_VERSION "3"
+#define PSC_MINOR_VERSION "3"
+#define PSC_FULL_VERSION "3.3"
+#define PSC_NAME_PREFIX "path"
+/* #define PSC_TARGET "ia64-open64-linux" */
+#cmakedefine PSC_GCC_VERSION "${PSC_GCC_VERSION}"
+#define PSC_GCC40_VERSION PSC_GCC_VERSION
+#define PSC_GCC42_VERSION PSC_GCC_VERSION
+#define PSC_INSTALL_PREFIX "${CMAKE_PREFIX_PATH}"
+#define PSC_PATCH_LEVEL "0"
+#define PSC_ROOT_PREFIX "${CMAKE_PREFIX_PATH}"
+#define PSC_TARGET "x86_64-pathscale-linux"
+#define BINPATH "${EXECUTABLE_OUTPUT_PATH}"
+#define NAMEPREFIX "path"
+#define LIBPATH "/" "${LIBRARY_OUTPUT_PATH}"
+#define ALTBINPATH      BINPATH
+#define ALTLIBPATH      LIBPATH
+#define PHASEPATH       PSC_INSTALL_PREFIX LIBPATH
+#define GNUPHASEPATH    PHASEPATH
+#endif
+
