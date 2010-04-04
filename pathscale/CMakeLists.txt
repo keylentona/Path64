@@ -1,7 +1,10 @@
-INCLUDE_DIRECTORIES(BEFORE SYSTEM ${CMAKE_CURRENT_BINARY_DIR}/include
-                                  ${CMAKE_CURRENT_SOURCE_DIR}/include)
+PROJECT(PATHSCALE)
 
-CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/include/pathscale_defs.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/include/pathscale_defs.h)
+
+INCLUDE(includes.cmake)
+
 
 ADD_SUBDIRECTORY(driver)
+ADD_SUBDIRECTORY(libcif)
+ADD_SUBDIRECTORY(libcmplrs)
+ADD_SUBDIRECTORY(libdwarf)
