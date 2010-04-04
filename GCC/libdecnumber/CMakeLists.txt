@@ -1,6 +1,6 @@
-
-FILE(COPY ${GCC_SOURCE_DIR}/ungenerated/common/gstdint.h DESTINATION ${GCC_BINARY_DIR}/libdecnumber)
-FILE(COPY ${GCC_SOURCE_DIR}/ungenerated/common/gstdint.h DESTINATION ${GCC_BINARY_DIR}/gcc)
+FILE(READ ${GCC_SOURCE_DIR}/ungenerated/common/gstdint.h GSTDINT_RAW)
+FILE(WRITE ${GCC_BINARY_DIR}/libdecnumber/gstdint.h ${GSTDINT_RAW})
+FILE(WRITE ${GCC_BINARY_DIR}/gcc/gstdint.h ${GSTDINT_RAW})
 
 INCLUDE_DIRECTORIES(BEFORE
   ${GCC_SOURCE_DIR}/include

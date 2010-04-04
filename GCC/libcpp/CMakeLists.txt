@@ -4,7 +4,8 @@ INCLUDE_DIRECTORIES(BEFORE
   ${GCC_BINARY_DIR}/libcpp
   )
 
-FILE(COPY ${GCC_SOURCE_DIR}/ungenerated/common/localedir.h DESTINATION ${GCC_BINARY_DIR}/libcpp)
+FILE(READ ${GCC_SOURCE_DIR}/ungenerated/common/localedir.h LOCALDIR_RAW)
+FILE(WRITE ${GCC_BINARY_DIR}/libcpp/localedir.h ${LOCALDIR_RAW})
 
 SET(cpp_SRCS
         charset.c   directives.c       errors.c         expr.c
