@@ -11,8 +11,13 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/Modules/GCCVersion.cmake)
 
 # Place both gccxml_cc1plus and the GCC_XML executables next to each
 # other.
+
 SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE PATH
   "Single output directory for all executables.")
+
+SET(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib" CACHE PATH
+  "Single output directory for all libraries.")
+
 MARK_AS_ADVANCED(EXECUTABLE_OUTPUT_PATH LIBRARY_OUTPUT_PATH)
 
 # Tell GCC and GCC-XML where to install relative to the CMAKE_INSTALL_PREFIX.
