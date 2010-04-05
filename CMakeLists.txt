@@ -24,9 +24,18 @@ MARK_AS_ADVANCED(EXECUTABLE_OUTPUT_PATH LIBRARY_OUTPUT_PATH)
 SET(GCCXML_INSTALL_ROOT)
 
 
-ADD_DEFINITIONS(-DTARG_X8664
+ADD_DEFINITIONS(-D_SGI_SOURCE
+                -D__GNU_BUG_WORKAROUND
+                -DTARG_X8664
                 -DKEY
-                -DFE_GNU_4_2_0)
+                -DFE_GNU_4_2_0
+                -DLONGLONG
+                -D_MIPSEL
+                -DTARG_LINUX
+                -D_MIPS_SZINT=32
+                -D_MIPS_SZPTR=32
+                -D_MIPS_SZLONG=32
+               )
 
 # Build GCC and GCC_XML.
 SUBDIRS(GCC)
