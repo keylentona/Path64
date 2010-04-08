@@ -1,12 +1,22 @@
+PROJECT(libdwarf)
 
+INCLUDE(CheckTypeSize)
+CHECK_TYPE_SIZE(uint64_t __UINT64_T)
 
-INCLUDE_DIRECTORIES(libdwarf
-                    ../include/libelf
-                    dwarfdump
-                    ${PATHSCALE_INCLUDE_DIR}/libelf
-                    ${CMAKE_CURRENT_BINARY_DIR}
-                    )
+INCLUDE(CheckIncludeFile)
+CHECK_INCLUDE_FILE("elf.h" HAVE_ELF_H)
 
+CONFIGURE_FILE(
+  ${libdwarf_SOURCE_DIR}/libdwarf/config.h.cmake.in
+  ${libdwarf_BINARY_DIR}/config.h @ONLY
+  )
+
+INCLUDE_DIRECTORIES(BEFORE
+  ${PATHSCALE_INCLUDE_DIR}/libelf
+  ${libdwarf_SOURCE_DIR}/dwarfdump
+  ${libdwarf_SOURCE_DIR}/libdwarf
+  ${libdwarf_BINARY_DIR}
+  )
 
 ADD_EXECUTABLE(tag_tree_build
                dwarfdump/tag_tree.c)
