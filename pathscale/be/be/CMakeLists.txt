@@ -152,3 +152,4 @@ SET(PATHSCALE_BE_BE_SRCS "../../common/targ_info/access/ti_init.c"
                          "../../ipa/main/optimize/ipo_tlog_utils.cxx")
 
 ADD_LIBRARY(be ${PATHSCALE_BE_BE_SRCS})
+ADD_DEPENDENCIES(be targ_info)
