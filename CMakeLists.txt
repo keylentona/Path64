@@ -37,6 +37,6 @@ ADD_DEFINITIONS(-D_SGI_SOURCE
                 -D_MIPS_SZLONG=32
                )
 
-# Build GCC and GCC_XML.
-SUBDIRS(GCC)
+# Build GCC and pathscale.
+ADD_SUBDIRECTORY(GCC)
 ADD_SUBDIRECTORY(pathscale)
