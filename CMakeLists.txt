@@ -8,6 +8,8 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/Modules/GCCVersion.cmake)
 
 #SET(CMAKE_C_FLAGS "$(BUILD_OPTIMIZE) -DTARG_X8664 -DKEY -DFE_GNU_4_2_0   -DIs_True_On -W -Wall -Wwrite-strings -Wstrict-prototypes -Wmissing-prototypes -Wold-style-definition -Wmissing-format-attribute -DHAVE_CONFIG_H")
 
+set(BUILD_TARGET_DIR x8664) # TODO: Make option, better name
+#set(BUILD_TARGET_DIR mips)
 
 # Place both gccxml_cc1plus and the GCC_XML executables next to each
 # other.
