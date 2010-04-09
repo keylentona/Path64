@@ -22,6 +22,7 @@ endmacro()
 
 #-----------------------------------------------------------------------------
 include_directories(
+  access
   generate
   ${PATHSCALE_SOURCE_DIR}/common/com
   ${CMAKE_CURRENT_BINARY_DIR}
@@ -69,3 +70,24 @@ add_library(targinfo STATIC
   )
 # Anything that links to targinfo should link to the rest of the libraries.
 target_link_libraries(targinfo ${targinfo_libs})
+
+#-----------------------------------------------------------------------------
+add_library(si_gen generate/si_gen.cxx)
+target_link_libraries(si_gen
+  targ_isa_subset
+  targ_isa_properties
+  targ_isa_operands
+  targ_isa_registers
+  targ_isa_enums
+  targ_isa_lits
+  )
+add_executable(opteron_si_gen proc/x8664/opteron_si.cxx)
+target_link_libraries(opteron_si_gen si_gen isa_gen_topcode)
+
+add_custom_command(
+  OUTPUT opteron.c
+  COMMAND opteron_si_gen
+  DEPENDS opteron_si_gen
+  )
+add_library(opteron SHARED opteron.c generate/init.cxx)
+set_property(TARGET opteron PROPERTY PREFIX "")
