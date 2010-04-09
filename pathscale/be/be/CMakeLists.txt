@@ -151,5 +151,10 @@ SET(PATHSCALE_BE_BE_SRCS "../../common/targ_info/access/ti_init.c"
                          "../../common/instrument/instr_reader.cxx"
                          "../../ipa/main/optimize/ipo_tlog_utils.cxx")
 
-ADD_LIBRARY(be ${PATHSCALE_BE_BE_SRCS})
-TARGET_LINK_LIBRARIES(be targinfo)
+add_library(be-static STATIC ${PATHSCALE_BE_BE_SRCS})
+set_property(TARGET be-static PROPERTY OUTPUT_NAME be)
+target_link_libraries(be-static targinfo m dl)
+
+add_library(be SHARED ${PATHSCALE_BE_BE_SRCS})
+set_property(TARGET be PROPERTY PREFIX "")
+target_link_libraries(be targinfo m dl)
