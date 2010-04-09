@@ -2,8 +2,10 @@
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
+set(targinfo_libs "")
+
 macro(gen_info type name)
-  add_executable(${name}_gen ${name}_gen.cxx ../${type}/${BUILD_TARGET_DIR}/${name}.cxx)
+  add_executable(${name}_gen generate/${name}_gen.cxx ${type}/${BUILD_TARGET_DIR}/${name}.cxx)
   target_link_libraries(${name}_gen ${ARGN})
   add_custom_command(
     OUTPUT targ_${name}.c targ_${name}.h
@@ -11,18 +13,19 @@ macro(gen_info type name)
     DEPENDS ${name}_gen
     )
   add_library(targ_${name} targ_${name}.c targ_${name}.h)
-  add_dependencies(targ_info targ_${name})
+  list(APPEND targinfo_libs targ_${name})
 endmacro()
 
 #-----------------------------------------------------------------------------
-include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+include_directories(
+  generate
+  ${PATHSCALE_SOURCE_DIR}/common/com
+  ${CMAKE_CURRENT_BINARY_DIR}
+  )
 
-# Define one target to generate all target information.
-add_custom_target(targ_info)
+add_library(gen_util STATIC generate/gen_util.cxx)
 
-add_library(gen_util STATIC gen_util.cxx)
-
-add_executable(isa_gen isa_gen.cxx ../isa/${BUILD_TARGET_DIR}/isa.cxx)
+add_executable(isa_gen generate/isa_gen.cxx isa/${BUILD_TARGET_DIR}/isa.cxx)
 target_link_libraries(isa_gen gen_util)
 add_custom_command(
   OUTPUT topcode.c topcode.h
@@ -52,3 +55,13 @@ gen_info(isa isa_pseudo       targ_isa_operands targ_isa_registers targ_isa_enum
 gen_info(proc proc            gen_util)
 gen_info(proc proc_properties targ_proc gen_util)
 gen_info(abi  abi_properties  targ_isa_subset targ_isa_registers gen_util)
+
+# Collect the rest of the sources in a 'targinfo' library.
+add_library(targinfo STATIC
+  access/ti_asm.c
+  access/ti_bundle.c
+  access/ti_latency.c
+  access/ti_errors.c
+  )
+# Anything that links to targinfo should link to the rest of the libraries.
+target_link_libraries(targinfo ${targinfo_libs})

@@ -1,5 +1,5 @@
 INCLUDE_DIRECTORIES(
-  ${PATHSCALE_BINARY_DIR}/common/targ_info/generate
+  ${PATHSCALE_BINARY_DIR}/common/targ_info
   ${PATHSCALE_BINARY_DIR}
 
   be
