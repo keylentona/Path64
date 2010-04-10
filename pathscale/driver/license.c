@@ -157,7 +157,7 @@ void obtain_license (char *exedir, int argc, char *argv[]) {
 #endif
       // bug 12667
       char *dir = get_executable_dir();
-      prodname = PSC_PRODNAME;
+      prodname = "Compiler";
       if (dir != NULL) {
 	char *basedir = directory_path(dir);
 	char *ndir = concat_strings(basedir, "/lib/" PSC_FULL_VERSION "/cray");

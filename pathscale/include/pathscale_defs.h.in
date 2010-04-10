@@ -22,5 +22,6 @@
 /* TODO : This should not be hardcoded */
 #define PSC_CRT_BEGINEND_PATH PHASEPATH "/crt"
 #define PSC_CRT_PATH "/" "${LIBRARY_OUTPUT_PATH}"
+#define PSC_BUILD_DATE "2010-04-04/07:45:28"
 #endif
 

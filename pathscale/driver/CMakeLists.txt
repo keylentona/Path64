@@ -31,7 +31,7 @@ add_executable(table ${PATHSCALE_TABLE_SRCS})
 
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/OPTIONS.P
-        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/sort_options.sh ${CMAKE_CURRENT_SOURCE_DIR} OPTIONS -DX8664 -DPSC_PRODNAME='"Compiler"' -DKEY  -DPSC_BUILD_DATE='"xxxx-xx-xx/xx:xx:xx"' -DLITTLE_ENDIAN_HOST -DHOST_IA32 -DNOOPT > ${CMAKE_CURRENT_BINARY_DIR}/OPTIONS.P 
+        COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/sort_options.sh ${CMAKE_CURRENT_SOURCE_DIR} OPTIONS -DX8664 -DPSC_PRODNAME='"Compiler"' -DKEY   -DLITTLE_ENDIAN_HOST -DHOST_IA32 -DNOOPT > ${CMAKE_CURRENT_BINARY_DIR}/OPTIONS.P 
         DEPENDS sort_options.sh OPTIONS
         )
 
@@ -56,7 +56,6 @@ include_directories(.
 
 # TODO: set proper build date and time 
 add_definitions(-std=gnu99
-                -DPSC_BUILD_DATE='"xxxx-xx-xx/xx:xx:xx"'
                 -DLITTLE_ENDIAN_HOST
                 -DHOST_IA32
                 -DNOOPT
