@@ -19,5 +19,8 @@
 #define ALTLIBPATH      LIBPATH
 #define PHASEPATH       PSC_INSTALL_PREFIX LIBPATH
 #define GNUPHASEPATH    PHASEPATH
+/* TODO : This should not be hardcoded */
+#define PSC_CRT_BEGINEND_PATH PHASEPATH "/crt"
+#define PSC_CRT_PATH "/" "${LIBRARY_OUTPUT_PATH}"
 #endif
 
