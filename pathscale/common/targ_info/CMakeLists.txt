@@ -47,14 +47,14 @@ gen_info(isa isa_properties   isa_gen_topcode)
 gen_info(isa isa_pack         targ_isa_properties isa_gen_topcode)
 gen_info(isa isa_print        targ_isa_properties isa_gen_topcode)
 gen_info(isa isa_bundle       targ_isa_properties isa_gen_topcode)
-gen_info(isa isa_decode       targ_isa_bundle isa_gen_topcode)
+gen_info(isa isa_decode       targ_isa_bundle targ_isa_pack isa_gen_topcode)
 
 gen_info(isa isa_subset       isa_gen_topcode)
 gen_info(isa isa_hazards      targ_isa_subset isa_gen_topcode)
 gen_info(isa isa_registers    targ_isa_subset isa_gen_topcode)
 target_link_libraries(targ_isa_registers targ_isa_subset)
 
-gen_info(isa isa_operands     targ_isa_registers targ_isa_enums isa_gen_topcode)
+gen_info(isa isa_operands     targ_isa_registers targ_isa_enums targ_isa_lits isa_gen_topcode)
 gen_info(isa isa_pseudo       targ_isa_operands targ_isa_registers targ_isa_enums isa_gen_topcode)
 
 gen_info(proc proc            gen_util)
