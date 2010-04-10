@@ -53,7 +53,14 @@ include_directories(.
                     ../common/com
                     ${CMAKE_CURRENT_BINARY_DIR})
 
-add_definitions(-std=gnu99)
+
+# TODO: set proper build date and time 
+add_definitions(-std=gnu99
+                -DPSC_BUILD_DATE='"xxxx-xx-xx/xx:xx:xx"'
+                -DLITTLE_ENDIAN_HOST
+                -DHOST_IA32
+                -DNOOPT
+                )
 
 add_executable(driver ${PATHSCALE_DRIVER_SRCS})
 
