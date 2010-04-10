@@ -1,0 +1,5 @@
+Copyright (C) 2007 QLogic Corporation.  All Rights Reserved.
+
+This directory contains the binutils-2.17.50.0.6 linker that is modified for
+IPA.  The IPA enhencements originally came from the cygnus_20000828 directory
+in the Open64 compiler.
