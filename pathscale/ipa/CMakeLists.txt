@@ -10,8 +10,8 @@ include_directories(
    ../be/opt 
    ../common/com/x8664 
    ../common/util 
-#   ../fake_ld/common 
-#   ../fake_ld 
+   ../fake_ld/common 
+   ../fake_ld 
    ../be 
    ..
    ../include 
@@ -126,9 +126,11 @@ set(libipa_sources
 	"../be/lno/lwn_util.cxx"
 )
 
-set_property(SOURCE ${libipl_sources} ${libipa_sources} PROPERTY COMPILE_DEFINITIONS MONGOOSE_BE;IPA_SUMMARY;__STDC_FORMAT_MACROS;__MIPS_AND_IA64_ELF_H)
 
-ADD_LIBRARY(ipa SHARED ${libipa_sources} ${libipl_sources})
+ADD_LIBRARY(ipa SHARED ${libipa_sources})
 ADD_LIBRARY(ipl SHARED ${libipl_sources})
 
-#target_link_libraries(wgen42 comutil iberty spin cmplrs m)
+set_property(TARGET ipl PROPERTY COMPILE_DEFINITIONS MONGOOSE_BE;IPA_SUMMARY;__STDC_FORMAT_MACROS;__MIPS_AND_IA64_ELF_H)
+set_property(TARGET ipa PROPERTY COMPILE_DEFINITIONS MONGOOSE_BE;_SUPPORT_IPA;__STDC_FORMAT_MACROS;__MIPS_AND_IA64_ELF_H;BACK_END)
+
+target_link_libraries(ipa ipl)
