@@ -903,7 +903,7 @@ void ipacom_doit (const char* ipaa_filename)
 #ifdef KEY
       // Since we are using GCC to link, don't print out the run-time support
       // files.
-      char *p;
+      const char *p;
       if (((p = strstr(*i, "/crt1.o")) && p[7] == '\0') ||
 	  ((p = strstr(*i, "/crti.o")) && p[7] == '\0') ||
 	  ((p = strstr(*i, "/crtbegin.o")) && p[11] == '\0') ||
