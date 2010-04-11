@@ -36,10 +36,13 @@ ELSE(CMAKE_C_COMPILER MATCHES "cl")
     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -w")
   ENDIF(CMAKE_C_COMPILER MATCHES "bcc32")
 ENDIF(CMAKE_C_COMPILER MATCHES "cl")
-
+# Unknown what happens if you remove TARG_X8664
 ADD_DEFINITIONS(-DALMOST_STDC
                 -DIs_True_On
                 -DHAVE_CONFIG_H
+		-DTARG_X8664
+		-DFE_GNU_4_2_0
+		-DKEY
                 -W
                 -Wall
                 -Wwrite-strings
