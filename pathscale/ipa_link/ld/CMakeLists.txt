@@ -1,9 +1,10 @@
 ADD_DEFINITIONS(-DHAVE_CONFIG_H=1)
 INCLUDE_DIRECTORIES(BEFORE
+  ${BFD_SOURCE_DIR}
   ${BFD_SOURCE_DIR}/include
+  ${BFD_SOURCE_DIR}/../include
+  .
 )
-#  ${GCC_BINARY_DIR}/libiberty
-#)
 
 SET(LD_SRCS
 ldgram.c 
@@ -19,7 +20,10 @@ ldver.c
 ldmisc.c
 ldfile.c
 ldcref.c
-  )
+ldmain.c
+eelf_x86_64.c
+eelf_i386.c
+ei386linux.c  )
 
 # ldmain.c is special
 #-DDEFAULT_EMULATION='"elf_x86_64"' \
@@ -29,6 +33,8 @@ ldcref.c
 #    ../../../ipa_link/ld/ldmain.c
 
 
+
+set_property(SOURCE ldmain.c PROPERTY COMPILE_DEFINITIONS DEFAULT_EMULATION="elf_x86_64";SCRIPTDIR="${INSTALL_DIR}/x86_64-unknown-linux-gnu/lib";BINDIR="${INSTALL_DIR}/bin";TOOLBINDIR="${INSTALL_DIR}/x86_64-unknown-linux-gnu/bin";TARGET="x86_64-unknown-linux-gnu";TARGET_SYSTEM_ROOT="")
 
 # I don't know if this is needed to pull in libiberty
 FOREACH(f
@@ -51,4 +57,4 @@ ENDFOREACH(f)
 
 #ADD_LIBRARY(iberty ${iberty_SRCS})
 add_executable(ld ${LD_SRCS})
-target_link_libraries(ld bfd iberty)
+target_link_libraries(ld bfd iberty dl)
