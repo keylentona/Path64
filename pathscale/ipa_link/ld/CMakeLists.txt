@@ -3,6 +3,7 @@ INCLUDE_DIRECTORIES(BEFORE
   ${BFD_SOURCE_DIR}
   ${BFD_SOURCE_DIR}/include
   ${BFD_SOURCE_DIR}/../include
+  ${CMAKE_CURRENT_BINARY_DIR}
   .
 )
 
@@ -32,6 +33,9 @@ ei386linux.c  )
 #    -DTARGET='"x86_64-unknown-linux-gnu"' -DTARGET_SYSTEM_ROOT=\"\" \
 #    ../../../ipa_link/ld/ldmain.c
 
+# /bin/sh ../pathscale/ipa_link/ld/genscripts.sh "../pathscale/ipa_link/ld" "/opt/pathscale/lib" "/opt/pathscale" "/opt/pathscale" x86_64-unknown-linux-gnu x86_64-unknown-linux-gnu x86_64-unknown-linux-gnu "elf_x86_64 elf_i386" "/usr/local/lib /lib /usr/lib" no elf_x86_64 "x86_64-unknown-linux-gnu" # Makes eelf_x86_64.c
+# /bin/sh ../pathscale/ipa_link/ld/genscripts.sh "../pathscale/ipa_link/ld" "/opt/pathscale/lib" "/opt/pathscale" "/opt/pathscale" x86_64-unknown-linux-gnu x86_64-unknown-linux-gnu x86_64-unknown-linux-gnu "elf_x86_64 elf_i386" "/usr/local/lib /lib /usr/lib" no elf_i386 "i386-unknown-linux-gnu" # Makes eelf_i386.c
+# /bin/sh ../pathscale/ipa_link/ld/genscripts.sh "../pathscale/ipa_link/ld" "/opt/pathscale/lib" "/opt/pathscale" "/opt/pathscale" x86_64-unknown-linux-gnu x86_64-unknown-linux-gnu x86_64-unknown-linux-gnu "elf_x86_64 elf_i386" "/usr/local/lib /lib /usr/lib" no i386linux "i386-unknown-linux-gnuaout" # Makes ei386linux.c
 
 
 set_property(SOURCE ldmain.c PROPERTY COMPILE_DEFINITIONS DEFAULT_EMULATION="elf_x86_64";SCRIPTDIR="${INSTALL_DIR}/x86_64-unknown-linux-gnu/lib";BINDIR="${INSTALL_DIR}/bin";TOOLBINDIR="${INSTALL_DIR}/x86_64-unknown-linux-gnu/bin";TARGET="x86_64-unknown-linux-gnu";TARGET_SYSTEM_ROOT="")
@@ -58,3 +62,4 @@ ENDFOREACH(f)
 #ADD_LIBRARY(iberty ${iberty_SRCS})
 add_executable(ld ${LD_SRCS})
 target_link_libraries(ld bfd iberty dl)
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/config.h.in ${CMAKE_CURRENT_BINARY_DIR}/config.h)
