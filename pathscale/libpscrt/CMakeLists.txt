@@ -27,3 +27,8 @@ set_property(TARGET pscrt_p PROPERTY COMPILE_FLAGS -pg)
 add_library(pscrt SHARED ${pscrt_sources})
 set_property(TARGET pscrt PROPERTY SOVERSION 1)
 set_property(TARGET pscrt PROPERTY LINK_FLAGS -Wl,--version-script="${libpscrt_SOURCE_DIR}/libpscrt.vs")
+
+install(TARGETS pscrt-static pscrt_p pscrt
+        LIBRARY DESTINATION ${PATH64_LIB_PATH}
+        ARCHIVE DESTINATION ${PATH64_LIB_PATH})
+

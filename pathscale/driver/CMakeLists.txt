@@ -61,5 +61,19 @@ add_definitions(-std=gnu99
                 -DNOOPT
                 )
 
-add_executable(driver ${PATHSCALE_DRIVER_SRCS})
+set(exe_prefix )
 
+add_executable(${exe_refix}pathcc ${PATHSCALE_DRIVER_SRCS})
+install(TARGETS ${exe_prefix}pathcc
+        RUNTIME DESTINATION bin)
+
+
+install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/pathcc${CMAKE_EXECUTABLE_SUFFIX}\" \"${CMAKE_INSTALL_PREFIX}/bin/pathCC${CMAKE_EXECUTABLE_SUFFIX}\")")
+
+install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/pathcc${CMAKE_EXECUTABLE_SUFFIX}\" \"${CMAKE_INSTALL_PREFIX}/bin/pathf95${CMAKE_EXECUTABLE_SUFFIX}\")")
+
+install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/pathcc${CMAKE_EXECUTABLE_SUFFIX}\" \"${CMAKE_INSTALL_PREFIX}/bin/pathcc-${PATH64_PKG_VERSION}${CMAKE_EXECUTABLE_SUFFIX}\")")
+
+install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/pathCC${CMAKE_EXECUTABLE_SUFFIX}\" \"${CMAKE_INSTALL_PREFIX}/bin/pathCC-${PATH64_PKG_VERSION}${CMAKE_EXECUTABLE_SUFFIX}\")")
+
+install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" -E create_symlink \"${CMAKE_INSTALL_PREFIX}/bin/pathf95${CMAKE_EXECUTABLE_SUFFIX}\" \"${CMAKE_INSTALL_PREFIX}/bin/pathf95-${PATH64_PKG_VERSION}${CMAKE_EXECUTABLE_SUFFIX}\")")

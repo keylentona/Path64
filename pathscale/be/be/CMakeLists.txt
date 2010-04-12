@@ -158,3 +158,7 @@ target_link_libraries(be-static targinfo m dl)
 add_library(be SHARED ${PATHSCALE_BE_BE_SRCS})
 set_property(TARGET be PROPERTY PREFIX "")
 target_link_libraries(be targinfo m dl)
+install(TARGETS be
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION ${PATH64_LIB_PATH})
+

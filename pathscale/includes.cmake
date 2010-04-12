@@ -192,6 +192,10 @@ ENDFOREACH(H)
 INCLUDE_DIRECTORIES(BEFORE SYSTEM include ${PATHSCALE_INCLUDE_DIR})
 
 
+install(FILES include/omp/omp_lib.h
+              include/omp/omp_lib.f
+        DESTINATION include)
+
 #clean:
 #
 #clobber:
