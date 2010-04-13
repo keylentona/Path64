@@ -3,7 +3,7 @@
 
 SET(PATHSCALE_INSTR2_SRCS       "dump.cxx"
 				"profile.cxx"
-				"profile_errors.cxx"
+				"../../common/instrument/profile_errors.cxx"
 				"profile_interface.cxx")
 
 
