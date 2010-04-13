@@ -27,7 +27,7 @@ SET(PATHSCALE_ARITH_SRCS        "bits.c"
 				"native.c"
 				"test_ar_intrin.c"
 				"cray1_sim.c"
-				"fintrin_dc_irix_tmp.c"
-				"fintrin_irix_tmp.c")
+				"fintrin_dc_irix_tmp.f"
+				"fintrin_irix_tmp.f")
 
 add_library(arith STATIC ${PATHSCALE_ARITH_SRCS})
