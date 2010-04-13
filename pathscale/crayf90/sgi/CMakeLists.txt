@@ -24,7 +24,7 @@ set(PATHSCALE_MFEF95_SRCS       "config.c"
 				"pu_info.c"
 				"strtab.c"
 				"symtab.c"
-				"symtab_verify.c
+				"symtab_verify.c"
 				"ttype.c"
 				"wn.c"
 				"wn_map.c"

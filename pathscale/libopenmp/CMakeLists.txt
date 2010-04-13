@@ -1,3 +1,0 @@
-# This makes libopenmp.so
-#gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -fpic -c     -D_GNU_SOURCE -DKEY -Werror -Wno-format  -I../../include -I../../libopenmp   -I../include  -O3 -DNDEBUG -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD -fno-strict-aliasing -Wall -Werror ../../libopenmp/utils.c -o utils.pic.o
-#gcc -m64       -shared   -Wl,-x -Wl,-soname=libopenmp.so.1 -Wl,--version-script=../../libopenmp/libopenmp.vs -o libopenmp.so.1 affinity.pic.o atomic.pic.o cpuid.pic.o lock.pic.o loop.pic.o manager.pic.o omp.pic.o schedule.pic.o stack.pic.o team.pic.o thread.pic.o utils.pic.o -lpthread
