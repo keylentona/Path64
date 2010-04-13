@@ -72,16 +72,16 @@ add_library(mpath STATIC ${PATHSCALE_MPATH_SRCS})
 
 
 #gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY   -std=gnu99 -D_GNU_SOURCE --include ../../libmpath/amd/hidden.h -D_libm_weak=1  -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/cis.c"
-cis.o
+#cis.o
 #gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY   -std=gnu99 -D_GNU_SOURCE --include ../../libmpath/amd/hidden.h -D_libm_weak=1  -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/cisf.c"
-cisf.o
+#cisf.o
 
 #gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -DCOMPILING_LOG2 -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY  -Werror -std=gnu99 -D_GNU_SOURCE --include ../../libmpath/amd/hidden.h -D_libm_weak=1  -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/amd/w_log.c"
-w_log2.o
+#w_log2.o
 #gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -DCOMPILING_LOG2 -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY  -Werror -std=gnu99 -D_GNU_SOURCE --include ../../libmpath/amd/hidden.h -D_libm_weak=1  -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/amd/w_logf.c"
-w_log2f.o
+#w_log2f.o
 #gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -DCOMPILING_LOG10 -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY  -Werror -std=gnu99 -D_GNU_SOURCE --include ../../libmpath/amd/hidden.h -D_libm_weak=1  -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/amd/w_log.c"
-w_log10.o
+#w_log10.o
 #gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -DCOMPILING_LOG10 -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY  -Werror -std=gnu99 -D_GNU_SOURCE --include ../../libmpath/amd/hidden.h -D_libm_weak=1  -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/amd/w_logf.c"
-w_log10f.o
+#w_log10f.o
 #ar cru libmpath.a w_copysignf.o w_copysign.o w_finitef.o w_finite.o w_fmaxf.o w_fmax.o w_fminf.o w_fmin.o w_fastcos.o w_fastexp.o w_fastexpf.o w_fastlog.o w_fastlogf.o w_fastlog10.o w_fastpow.o w_fastpowf.o w_fastsin.o w_fastsincos.o w_pow.o cis.o cisf.o pow_errorl.o remainder_piby2d2f.o s_atan2.o s_atan2f.o s_atan.o s_atanf.o s_ceil.o s_ceilf.o s_fdim.o s_fdimf.o s_floor.o s_floorf.o s_fma.o s_fmaf.o s_logb.o s_logbf.o s_modf.o s_modff.o s_tan.o s_tanf.o s_trunc.o s_truncf.o w_acos.o w_acosf.o w_asin.o w_asinf.o w_cosh.o w_coshf.o w_exp10.o w_exp10f.o w_exp2.o w_exp2f.o w_exp.o w_expf.o w_hypot.o w_hypotf.o w_powf.o w_remainder.o w_remainderf.o w_remainder_piby2.o w_remainder_piby2f.o w_sincos.o w_sincosf.o w_sinh.o w_sinhf.o w_tanh.o w_tanhf.o w_log2.o w_log2f.o w_log10.o w_log10f.o
