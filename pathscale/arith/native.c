@@ -39,13 +39,14 @@
 int ar_rounding_modes = 0xf;	/* All rounding modes allowed */
 int ar_underflow_modes = 1<<AR_UNDERFLOW_TO_DENORM;
 
-#if _Solaris || defined(_CRAYMPP) || defined(__mips)
+#if _Solaris || defined(_CRAYMPP) || defined(__mips) || defined(__x86_64)
 
 /* Call native, F90-compiled routines to evaluate all functions */
-
+/* This seems wrong
 #if !defined(__mips)
 #	define NULL				0
 #endif
+*/
 #define IEEE_FLOAT_32		(UNROUNDED_TYPE(AR_Float_IEEE_NR_32))
 #define IEEE_FLOAT_64		(UNROUNDED_TYPE(AR_Float_IEEE_NR_64))
 #define IEEE_FLOAT_128		(UNROUNDED_TYPE(AR_Float_IEEE_NR_128))

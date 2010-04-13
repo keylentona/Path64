@@ -6,5 +6,10 @@ SET(PATHSCALE_INSTR2_SRCS       "dump.cxx"
 				"../../common/instrument/profile_errors.cxx"
 				"profile_interface.cxx")
 
+INCLUDE_DIRECTORIES(
+	.
+	../../common/instrument
+	../../common/com
+	../include)
 
 add_library(instr STATIC ${PATHSCALE_INSTR2_SRCS})

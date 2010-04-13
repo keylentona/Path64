@@ -47,4 +47,13 @@ SET(PATHSCALE_FE90_SRCS "cifcmnrecs.c"
 			"utils.c"
 			"fold.f")
 
+INCLUDE_DIRECTORIES(
+	"../../crayf90/fe90"
+	"../../arith"
+	"../../common/com"
+	"../../common/com/x8664"
+	"../../linux/mfef90_includes"
+	"../../clibinc/cray"
+)
+
 add_library(fe90 STATIC ${PATHSCALE_FE90_SRCS})

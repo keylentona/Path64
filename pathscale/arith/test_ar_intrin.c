@@ -30,7 +30,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#if !defined(__sparc__) && !defined(__mips)
+#if 0 /* !defined(__sparc__) && !defined(__mips) */
 # include <fortran.h>
 #endif
 
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 {
 	prevflen = 0;
 
-#if defined(__sparc__) || defined(__mips)
+#if  1 /* defined(__sparc__) || defined(__mips) */
 	extern void test_native_();
 	test_native_();
 #else
@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 	exit(fail);
 }
 
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
 void ar_strtod_(answer)
 #else
 void AR_STRTOD(answer)
@@ -114,7 +114,7 @@ double*	answer;
 }
 
 #ifdef LD
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
 void ar_strtold_(answer)
 #else
 void AR_STRTOLD(answer)
@@ -128,7 +128,7 @@ long double*	answer;
 	int			ierr;
 	AR_TYPE		rtype;
 
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
 	if(*answer >= 1.e6L)
 		sprintf(num,"%30.22Le",*answer);
 	else if(*answer >= 0.)
@@ -159,7 +159,7 @@ long double*	answer;
 #endif
 
 
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
 void ar_intrin1_(func, opnd, answer, func_len)
 char*				func;
 AR_DATA*			opnd;
@@ -176,7 +176,7 @@ AR_DATA*			answer;
 	int				n;
 	AR_TYPE			rtype,otype,ptype;
 
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips)*/
 	char			*fname = func;
 	int				flen   = func_len;
 #else
@@ -256,7 +256,7 @@ AR_DATA*			answer;
 	check_ar_result(fname, flen, &result[0], ierr, answer, n);
 }
 
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
 void ar_intrin2_(func, opnd1, opnd2, answer, func_len)
 char*				func;
 AR_DATA*			opnd1;
@@ -276,7 +276,7 @@ AR_DATA*			answer;
 	AR_TYPE			rtype,otype,ptype;
 	AR_HOST_SINT64	base,power;
 
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
 	char			*fname = func;
 	int				flen   = func_len;
 #else

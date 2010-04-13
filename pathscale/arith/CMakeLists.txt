@@ -30,4 +30,12 @@ SET(PATHSCALE_ARITH_SRCS        "bits.c"
 				"fintrin_dc_irix_tmp.f"
 				"fintrin_irix_tmp.f")
 
+INCLUDE_DIRECTORIES(
+	.
+	../clibinc)
+
+# -DEDITION used to come from pathscale/arith/edition
+ADD_DEFINITIONS(
+	-DEDITION=\"23\")
+
 add_library(arith STATIC ${PATHSCALE_ARITH_SRCS})

@@ -47,7 +47,7 @@ static const char USMID[] = "@(#)30/cray1_sim.c	30.0	03/18/98 12:06:00";
 #include "arith.internal.h"
 #include "int64.h"
 
-#if !defined(__mips)
+#if 0 /* !defined(__mips) */
 
 int ar_mach_type = 0;
 int ar_rounding_modes = 0;
