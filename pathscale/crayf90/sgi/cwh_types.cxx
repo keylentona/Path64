@@ -70,6 +70,7 @@ static char *rcs_id = "$Source: crayf90/sgi/SCCS/s.cwh_types.cxx $ $Revision: 1.
 /* sgi includes */
 
 #include "defs.h"
+#include "host.h"
 #include "glob.h"  
 #include "stab.h"
 #include "ttype.h"
