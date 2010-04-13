@@ -60,6 +60,10 @@ set_property(SOURCE ${IR_COMMON_SRCS} PROPERTY COMPILE_DEFINITIONS __MIPS_AND_IA
 
 ADD_EXECUTABLE(ir_b2a ${IR_B2A_SRCS} ${IR_COMMON_SRCS})
 ADD_EXECUTABLE(ir_size ${IR_SIZE_SRCS} ${IR_COMMON_SRCS})
-#according to the build log, be-static is not necessary. it seems required though
-target_link_libraries(ir_b2a comutil m be-static)
-target_link_libraries(ir_size comutil m be-static)
+
+target_link_libraries(ir_b2a comutil m )
+target_link_libraries(ir_size comutil m )
+
+# TODO : Need to add some symlinks
+#ln -sf ir_b2a ir_sel
+#ln -sf ir_b2a ir_all
