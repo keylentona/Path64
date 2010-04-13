@@ -1,1 +1,2 @@
-# this should include the subdir sgi and fe90
+ADD_SUBDIRECTORY(sgi)
+ADD_SUBDIRECTORY(fe90)

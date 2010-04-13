@@ -1,1 +1,1 @@
-# include subdirectory libinstr2
+ADD_SUBDIRECTORY(libinstr2)
