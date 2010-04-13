@@ -45,6 +45,6 @@ SET(PATHSCALE_FE90_SRCS "cifcmnrecs.c"
 			"src_input.c"
 			"sytb.c"
 			"utils.c"
-			"fold.c")
+			"fold.f")
 
 add_library(fe90 STATIC ${PATHSCALE_FE90_SRCS})

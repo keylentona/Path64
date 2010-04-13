@@ -58,7 +58,6 @@ set(PATHSCALE_MFEF95_SRCS       "../../common/com/config.cxx"
 				"../../crayf90/sgi/decorate_utils.cxx"
 				"../../crayf90/sgi/f2c_abi_utils.cxx"
 				"../../crayf90/sgi/sgi_cmd_line.cxx"
-				"../../crayf90/sgi/sgi_cmd_line.h
 				"../../crayf90/sgi/path_intrinsic_list.cxx"
 				"../../crayf90/sgi/make_depend.cxx"
 				"../../common/com/x8664/config_host.c"
