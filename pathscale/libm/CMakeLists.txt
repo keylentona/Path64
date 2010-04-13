@@ -2,7 +2,7 @@
 # gcc -m64 -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -c     -D_IP_NAN_SETS_ERRNO -D_HDW_SQRT -DNO_LONG_DOUBLE -D_SW_PIPELINE -DPIC -I../include -I../../libmpath -I../../libmpath/../libm -I../../libmpath/amd -DFE_GNU_4_2_0  -DTARG_X8664 -DKEY   -std=gnu99 -D_GNU_SOURCE   -I../include  -O3 -LNO:vintr=0 -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD ../../libmpath/amd/vrsapowf.c -o vrsapowf.c
 
 
-SET(PATHSCALE_MV_SRCS   "vrdacos.c"
+SET(PATHSCALE_MV_SRCS   "vrdacos.S"
 			"vrdaexp.c"
 			"vrdalog.c"
 			"vrdalog10.c"

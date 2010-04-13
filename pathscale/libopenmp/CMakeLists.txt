@@ -15,7 +15,7 @@ SET(PATHSCALE_OPENMP_SRCS       "affinity.c"
 				"utils.c")
 
 add_library (openmp STATIC ${PATHSCALE_OPENMP_SRCS})
-add_library (openmp SHARED ${PATHSCALE_OPENMP_SRCS})
+#add_library (openmp SHARED ${PATHSCALE_OPENMP_SRCS})
 # examples since I know we'll need the version script
 #set_property(TARGET pscrt PROPERTY SOVERSION 1)
 #set_property(TARGET pscrt PROPERTY LINK_FLAGS -Wl,--version-script="${libpscrt_SOURCE_DIR}/libpscrt.vs")
