@@ -4,6 +4,8 @@
 # libgfortran first and then use mfef95-fake to build mfef95 that
 # links against libpathfortran
 # Right now config.cxx and many other files are built twice or even four times because of strange -D defines
+# So we must build confix.cxx twice.. Once without -DBACK_END for mfef95 and
+# once for be with -DBACK_END
 
 set(PATHSCALE_MFEF95_SRCS       "../../common/com/config.cxx"
 				"../../common/com/const.cxx"
