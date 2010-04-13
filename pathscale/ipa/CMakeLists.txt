@@ -16,6 +16,7 @@ include_directories(
    ..
    ../include 
    ../include/libelf
+   ${PATHSCALE_BINARY_DIR}/be
   )
 
 set(libipl_sources 

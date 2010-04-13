@@ -1,7 +1,6 @@
 INCLUDE_DIRECTORIES(
   ${PATHSCALE_BINARY_DIR}/common/targ_info
-  ${PATHSCALE_BINARY_DIR}
-
+  ${PATHSCALE_BINARY_DIR}/be
   be
   cg
   com
