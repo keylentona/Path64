@@ -30,3 +30,5 @@ ADD_SUBDIRECTORY(arith)
 ADD_SUBDIRECTORY(f95_coco)
 ADD_SUBDIRECTORY(crayf90)
 ADD_SUBDIRECTORY(ir_tools)
+ADD_SUBDIRECTORY(libpathfortran)
+# libu removed from subdirectories
