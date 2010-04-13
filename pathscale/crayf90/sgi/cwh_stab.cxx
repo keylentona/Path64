@@ -1937,19 +1937,20 @@ cwh_stab_adjust_name(ST * st)
 
     n = strlen(s);
     p = (char *) malloc(n+1);
-    (void) cwh_auxst_stem_name(st,strcpy(p,s));
+	strcpy(p, s);
+    (void) cwh_auxst_stem_name(st, p);
     p[n-1] = '\0';
 
   } else {
 
     c = '.' ;
-    p = strchr(s,c);
+    p = (char *)strchr(s,c);
     
     if (p != NULL) {
 
       n = p-s+1;
       p = (char *) malloc(n);
-      p = strncpy(p,s,n-1);
+      strncpy(p, s, n-1);
       p[n-1] = '\0';
 
       cwh_auxst_stem_name(st,p);

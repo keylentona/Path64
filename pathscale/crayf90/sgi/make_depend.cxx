@@ -185,7 +185,7 @@ MDtoolcmp ( const char *tool, const char *s, int slen ) {
 	char	*t;
 	int	toollen;
 	
-	t = strpbrk(tool," \n");	
+	t = (char *)strpbrk(tool," \n");	
 	toollen = t-tool;
 
 	if ( (t == 0) || (toollen != slen) )   {return -1;}
@@ -208,7 +208,7 @@ MDtargcmp ( const char *targ, const char *s, int slen ) {
 	char	*t;
 	int	targlen;
 	
-	t = strpbrk(targ,": ");	
+	t = (char *)strpbrk(targ,": ");	
 	targlen = t-targ;
 
 	if ( (t == 0) || (targlen != slen) )   {return -1;}
