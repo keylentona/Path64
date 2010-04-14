@@ -310,6 +310,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libF77/l_mod.c"
 				"../libF77/l_nint.c"
 				"../libF77/l_sign.c"
+				"../libF77/lgamma.c"
 				"../libF77/lnblnk_.c"
 				"../libF77/mclock_.c"
 				"../libF77/mvbits.c"
@@ -482,7 +483,8 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libfi/mathlb/ieee_features.F90"
 				"../libfi/mathlb/ieee_int.c"
 				"../libfi/mathlb/ieee_module_support.c"
-				"../libfi/mathlb/ieee_next_after.c"
+# This needs -D_GNU_SOURCE
+#				"../libfi/mathlb/ieee_next_after.c"
 				"../libfi/mathlb/ilen.c"
 				"../libfi/mathlb/iso_c_binding_support.c"
 				"../libfi/mathlb/iso_c_binding.F90"
@@ -788,7 +790,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libu/util/posix/utilintrin.c"
 				"../libu/util/second.c"
 				"../libu/util/secondr.c"
-				"../libu/util/timef.c"
+#				"../libu/util/timef.c"
 				"../libU77/abort_.c"
 				"../libU77/access_.c"
 				"../libU77/alarm_.c"
@@ -796,6 +798,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libU77/charutil.c"
 				"../libU77/chdir_.c"
 				"../libU77/chmod_.c"
+				"../libU77/cmd_line.c"
 				"../libU77/ctime_.c"
 				"../libU77/date_.c"
 				"../libU77/dbes.c"
@@ -862,6 +865,26 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libU77/umask_.c"
 				"../libU77/unlink_.c"
 				"../libU77/wait_.c")
+
+INCLUDE_DIRECTORIES(
+	"../clibinc"
+	"../clibinc/cray"
+	"../clibroot"
+	"../libcsup/include"
+	.
+	"../include"
+	"../libf/include"
+	"../libu"
+	"../libfi/include"
+)
+
+ADD_DEFINITIONS(
+	-D_LIBU
+	-D_LITTLE_ENDIAN
+	-D_LIB_INTERNAL
+	-DPLI
+	-DI90
+	-DFTN90_IO)
 
 add_library(pathfortran STATIC ${PATHSCALE_PATHFORTRAN_SRCS})
 

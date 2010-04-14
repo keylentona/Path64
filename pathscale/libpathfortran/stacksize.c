@@ -34,7 +34,7 @@
 # include <sys/sysctl.h>
 #endif /* defined(BUILD_OS_DARWIN) */
 
-#include "../../clibinc/liberrno.h"
+#include "liberrno.h"
 
 #define STACK_MIN 65536
 

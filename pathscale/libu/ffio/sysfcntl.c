@@ -57,7 +57,7 @@
 #include <fcntl.h>
 #include "sysio.h"
 #ifdef KEY /* Bug 11654 */
-#include "../../libfoobar/qk.h"
+#include "qk.h"
 #endif /* KEY Bug 11654 */
 
 int

@@ -7,7 +7,8 @@ INCLUDE(includes.cmake)
 
 EXECUTE_PROCESS(COMMAND "/bin/sh" ${PATHSCALE_SOURCE_DIR}/be/com/gen_preg_list.sh ${PATHSCALE_SOURCE_DIR}/common/util WORKING_DIRECTORY ${PATHSCALE_BINARY_DIR}/be)
 
-ADD_DEFINITIONS(-D_GNU_SOURCE)
+# This kills the libpathfortran build at pathscale/libu/numconv/mpp/defgu2s.c
+#ADD_DEFINITIONS(-D_GNU_SOURCE)
 
 ADD_SUBDIRECTORY(driver)
 ADD_SUBDIRECTORY(libcif)
