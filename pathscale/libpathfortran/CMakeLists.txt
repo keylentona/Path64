@@ -16,7 +16,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libfi/array/minval_gen.c"
 				"../libfi/array/pack_gen.c"
 				"../libfi/prodsum/prod0_gen.c"
-				"../libfi/prodsum/prod_gen.c
+				"../libfi/prodsum/prod_gen.c"
 				"../libfi/array/reshape_gen.c"
 				"../libfi/array/spread_gen.c"
 				"../libfi/prodsum/sum0_gen.c"
