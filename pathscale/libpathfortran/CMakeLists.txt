@@ -6,15 +6,15 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libfi/array/all_gen.c"
 				"../libfi/array/any_gen.c"
 				"../libfi/array/count_gen.c"
-				"../libfi/array/cshift_gen.c
+				"../libfi/array/cshift_gen.c"
 				"../libfi/array/eoshift_gen.c"
-				"../libfi/array/maxloc_gen.c				
-				"../libfi/array/maxval0_gen.c
-				"../libfi/array/maxval_gen.c
-				"../libfi/array/minloc_gen.c
-				"../libfi/array/minval0_gen.c
-				"../libfi/array/minval_gen.c
-				"../libfi/array/pack_gen.c
+				"../libfi/array/maxloc_gen.c"				
+				"../libfi/array/maxval0_gen.c"
+				"../libfi/array/maxval_gen.c"
+				"../libfi/array/minloc_gen.c"
+				"../libfi/array/minval0_gen.c"
+				"../libfi/array/minval_gen.c"
+				"../libfi/array/pack_gen.c"
 				"../libfi/prodsum/prod0_gen.c"
 				"../libfi/prodsum/prod_gen.c
 				"../libfi/array/reshape_gen.c"
