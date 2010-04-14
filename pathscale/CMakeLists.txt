@@ -5,8 +5,6 @@ SET(CMAKE_CXX_FLAGS "-D_LANGUAGE_C_PLUS_PLUS ${CMAKE_CXX_FLAGS}")
 
 INCLUDE(includes.cmake)
 
-EXECUTE_PROCESS(COMMAND "/bin/sh" ${PATHSCALE_SOURCE_DIR}/be/com/gen_preg_list.sh ${PATHSCALE_SOURCE_DIR}/common/util WORKING_DIRECTORY ${PATHSCALE_BINARY_DIR}/be)
-
 # This kills the libpathfortran build at pathscale/libu/numconv/mpp/defgu2s.c
 #ADD_DEFINITIONS(-D_GNU_SOURCE)
 

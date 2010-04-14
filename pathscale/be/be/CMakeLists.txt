@@ -151,6 +151,13 @@ SET(PATHSCALE_BE_BE_SRCS "../../common/targ_info/access/ti_init.c"
                          "../../common/instrument/instr_reader.cxx"
                          "../../ipa/main/optimize/ipo_tlog_utils.cxx")
 
+add_custom_command(
+  OUTPUT ${PATHSCALE_BINARY_DIR}/be/preg_list.cxx
+  COMMAND /bin/sh ${PATHSCALE_SOURCE_DIR}/be/com/gen_preg_list.sh ${PATHSCALE_SOURCE_DIR}/common/util
+  DEPENDS ${PATHSCALE_SOURCE_DIR}/be/com/gen_preg_list.sh
+  WORKING_DIRECTORY ${PATHSCALE_BINARY_DIR}/be
+  )
+
 add_library(be-static STATIC ${PATHSCALE_BE_BE_SRCS})
 set_property(TARGET be-static PROPERTY OUTPUT_NAME be)
 target_link_libraries(be-static targinfo m dl)
@@ -158,6 +165,7 @@ target_link_libraries(be-static targinfo m dl)
 add_library(be SHARED ${PATHSCALE_BE_BE_SRCS})
 set_property(TARGET be PROPERTY PREFIX "")
 target_link_libraries(be targinfo m dl)
+add_dependencies(be be-static) # serialize to generate preg_list.cxx only once
 install(TARGETS be
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION ${PATH64_LIB_PATH})
