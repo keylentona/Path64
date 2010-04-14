@@ -39,7 +39,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libf/fio/fork.c"
 				"../libf/fio/fseek.c"
 				"../libf/fio/ftell.c"
-				"../libf/fio/open.c
+				"../libf/fio/open.c"
 				"../libf/fort/pause.c"
 				"../libfi/element/rtc.c"
 				"../libf/fio/util.c"
