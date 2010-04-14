@@ -3,6 +3,48 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"non_qk.c"
 				"segv.c"
 				"stacksize.c"
+				"../libfi/array/all_gen.c"
+				"../libfi/array/any_gen.c"
+				"../libfi/array/count_gen.c"
+				"../libfi/array/cshift_gen.c
+				"../libfi/array/eoshift_gen.c"
+				"../libfi/array/maxloc_gen.c				
+				"../libfi/array/maxval0_gen.c
+				"../libfi/array/maxval_gen.c
+				"../libfi/array/minloc_gen.c
+				"../libfi/array/minval0_gen.c
+				"../libfi/array/minval_gen.c
+				"../libfi/array/pack_gen.c
+				"../libfi/prodsum/prod0_gen.c"
+				"../libfi/prodsum/prod_gen.c
+				"../libfi/array/reshape_gen.c"
+				"../libfi/array/spread_gen.c"
+				"../libfi/prodsum/sum0_gen.c"
+				"../libfi/prodsum/sum_gen.c"
+				"../libfi/array/transfer_gen.c"
+				"../libfi/array/trans_gen.c"
+				"../libfi/array/unpack_gen.c"
+				"../libf/fort/end.c"
+				"../libf/fio/backspace.c"
+				"../libf/fio/endfile.c"
+				"../libf/fio/globals.c"
+				"../libf/fio/inquire.c"
+				"../libf/fio/lread.c"
+				"../libf/fio/rdfmt.c"
+				"../libf/fio/rewind.c"
+				"../libfi/matrix/jgemmx.F"
+				"../libfi/matrix/jsgemmx.F"
+				"../libfi/matrix/lgemmx.F"
+				"../libfi/char/char.c"
+				"../libf/fio/fork.c"
+				"../libf/fio/fseek.c"
+				"../libf/fio/ftell.c"
+				"../libf/fio/open.c
+				"../libf/fort/pause.c"
+				"../libfi/element/rtc.c"
+				"../libf/fio/util.c"
+				"../libf/fio/fffcntl.c"
+				"../libfi/element/rtc.c"
 				"../libcsup/gen/memwcpy_c.c"
 				"../libcsup/gen/strnrstrn.c"
 				"../libcsup/gen/strnstrn.c"
