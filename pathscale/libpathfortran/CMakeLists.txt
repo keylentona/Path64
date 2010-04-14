@@ -507,14 +507,25 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libfi/mathlb/htoi.c"
 				"../libfi/mathlb/hton.c"
 				"../libfi/mathlb/iabs.c"
-				"../libfi/mathlb/ieee_arithmetic.F90"
+# Only bother building the corresponding foo.F90 source with pathf90 since
+# gfortran and friends will not be compatible anyway.
+# OMP_LIB.mod
+# OMP_LIB_KINDS.mod
+# ISO_C_BINDING.mod
+# IEEE_EXCEPTIONS.mod
+# ISO_FORTRAN_ENV.mod
+# IEEE_ARITHMETIC.mod
+# IEEE_FEATURES.mod
 				"../libfi/mathlb/ieee_binary_scale_d_i.c"
 				"../libfi/mathlb/ieee_binary_scale_d_n.c"
 				"../libfi/mathlb/ieee_binary_scale_h_i.c"
 				"../libfi/mathlb/ieee_binary_scale_h_n.c"
 				"../libfi/mathlb/ieee_binary_scale_r_i.c"
 				"../libfi/mathlb/ieee_binary_scale_r_n.c"
+# Order matters here.. Must have IEEE_EXCEPTIONS.mod before building
+# ieee_arithmetic
 				"../libfi/mathlb/ieee_exceptions.F90"
+				"../libfi/mathlb/ieee_arithmetic.F90"
 				"../libfi/mathlb/ieee_exponent_d.c"
 				"../libfi/mathlb/ieee_exponent_h.c"
 				"../libfi/mathlb/ieee_exponent_i.c"
@@ -928,7 +939,19 @@ ADD_DEFINITIONS(
 	-DI90
 	-DFTN90_IO)
 
-add_library(pathfortran STATIC ${PATHSCALE_PATHFORTRAN_SRCS})
+# Need to add these as definitions when building with pathf90
+#	-Wf,-intrinsic_module_gen
+#	-Wf,-intrinsic_module_path=.
+
+add_executable( gen_ieee_cpp_macros  ../libfi/mathlb/gen_ieee_cpp_macros.c)
+
+add_custom_command(
+		OUTPUT ieee_cpp_macros.h
+		COMMAND  gen_ieee_cpp_macros > ${CMAKE_BINARY_DIR}/pathscale/include/ieee_cpp_macros.h
+		DEPENDS gen_ieee_cpp_macros)
+
+
+add_library(pathfortran STATIC ${PATHSCALE_PATHFORTRAN_SRCS} ieee_cpp_macros.h)
 
 #gcc -m64       -shared   -L../libm -Wl,-x -o libpathfortran.so.1 nlspath.pic.o segv.pic.o stacksize.pic.o  non_qk.pic.o -lmpath -Wl,-soname=libpathfortran.so.1 -Wl,--version-script=../../libpathfortran/libpathfortran.vs
 
