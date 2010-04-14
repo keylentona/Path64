@@ -33,8 +33,9 @@
 #define __USE_GNU
 #endif
 #include <sched.h>
-
-#ifndef CPU_ZERO
+/* Reverse this so we don't have to add yet another -D on the command line */
+/*#ifndef CPU_ZERO */
+#if 0
 /* For distributions that do not provide these in <sched.h>
  * Modern distributions do provide them, and the definitions are
  * quite different to those below. */

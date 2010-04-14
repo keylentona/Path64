@@ -14,6 +14,9 @@ SET(PATHSCALE_OPENMP_SRCS       "affinity.c"
 				"thread.c"
 				"utils.c")
 
+ADD_DEFINITIONS(
+	-std=gnu99)
+
 add_library (openmp STATIC ${PATHSCALE_OPENMP_SRCS})
 #add_library (openmp SHARED ${PATHSCALE_OPENMP_SRCS})
 # examples since I know we'll need the version script

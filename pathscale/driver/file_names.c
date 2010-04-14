@@ -29,6 +29,8 @@
 
 */
 
+/* To work around older glibc that doesn't have strdupa(). This makes it so we don't have to define on the command line globally */
+#define _GNU_SOURCE 
 
 #include <stdio.h>
 #include <stdlib.h>

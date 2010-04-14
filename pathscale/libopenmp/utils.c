@@ -332,7 +332,7 @@ static void __pmp_param_init (void)
 
 static void __pmp_init_wtick (void)
 {
-  int64_t diff = LONG_LONG_MAX;
+  int64_t diff = LLONG_MAX; 
   int64_t last;
   int countdown;
   struct timeval time;

@@ -498,7 +498,7 @@
 
 
 
-# if defined(_LINUX_LINUX) || defined(_DARWIN_DARWIN)
+# if 1 /* defined(_LINUX_LINUX) || defined(_DARWIN_DARWIN) */
 
 # if 0
 /*******************************************************/
@@ -528,7 +528,7 @@
 #	define _DOPE_VECTOR_32_OR_64		1
 #	define _TARGET_DOUBLE_ALIGN		1
 # endif /* _LP64 */
-#     if defined(_LINUX_LINUX)
+#     if 1 /*defined(_LINUX_LINUX) */
 #	define _HOST_OS_LINUX			1
 #	define _TARGET_OS_LINUX			1
 #     elif defined(_DARWIN_DARWIN)

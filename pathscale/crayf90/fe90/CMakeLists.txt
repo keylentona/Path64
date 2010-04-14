@@ -56,4 +56,7 @@ INCLUDE_DIRECTORIES(
 	"../../clibinc/cray"
 )
 
+ADD_DEFINITIONS(
+	-std=gnu99)
+
 add_library(fe90 STATIC ${PATHSCALE_FE90_SRCS})

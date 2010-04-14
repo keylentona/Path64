@@ -470,7 +470,7 @@
 
 /* IEEE_SAVE_SIZE should be the larger of the size needed for fenv_t under
  * -m32 and -m64 */
-#ifdef _LINUX_LINUX
+/*#ifdef _LINUX_LINUX */
 # if defined(TARG_X8664)
     /* The size of fenv_t on Linux systems for -m64 is 32 bytes. The size on
      * Fedora Core 1 systems for -m32 is 32 bytes, but on Fedora Core 2 and
@@ -481,7 +481,7 @@
 # elif defined(TARG_MIPS)
 #   define IEEE_SAVE_SIZE			4
 # endif /* defined(TARG_whatever) */
-#endif /* _LINUX_LINUX */
+/*#endif / _LINUX_LINUX */
 #ifdef _DARWIN_DARWIN
 /* -m32 gives 16, but for now we double it in case -m64 is larger or we have
  * to use our own structure anyway */
