@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.3 FATAL_ERROR)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.1 FATAL_ERROR)
 PROJECT(Path64)
 
 # Define a user option whether to build the Fortran compiler.
