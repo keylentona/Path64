@@ -1,6 +1,18 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6.3 FATAL_ERROR)
 PROJECT(Path64)
 
+# Define a user option whether to build the Fortran compiler.
+OPTION(PATH64_ENABLE_FORTRAN "Build Fortran compiler" ON)
+IF(PATH64_ENABLE_FORTRAN)
+  INCLUDE(${Path64_SOURCE_DIR}/cmake/Modules/CheckFortran.cmake)
+  IF(CMAKE_Fortran_COMPILER)
+    ENABLE_LANGUAGE(Fortran)
+  ELSE()
+    MESSAGE(STATUS "No working Fortran compiler is available")
+    SET(PATH64_ENABLE_FORTRAN 0)
+  ENDIF()
+ENDIF()
+
 # Tell GCC_XML that we are providing gccxml_cc1plus for it.
 SET(GCCXML_NATIVE_CC1PLUS 1)
 
