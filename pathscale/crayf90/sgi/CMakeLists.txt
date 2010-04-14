@@ -7,6 +7,21 @@
 # So we must build confix.cxx twice.. Once without -DBACK_END for mfef95 and
 # once for be with -DBACK_END
 
+include_directories(
+.
+../../crayf90/fe90
+../../arith
+../../common/util
+../../common/com
+../../common/com/x8664
+../../linux/mfef90_includes
+../../clibinc/cray
+../include
+../../include/cmplrs
+
+)
+
+
 set(PATHSCALE_MFEF95_SRCS       "../../common/com/config.cxx"
 				"../../common/com/const.cxx"
 				"../../common/com/controls.cxx"
@@ -64,6 +79,11 @@ set(PATHSCALE_MFEF95_SRCS       "../../common/com/config.cxx"
 				"../../crayf90/sgi/make_depend.cxx"
 				"../../common/com/x8664/config_host.c"
 				"../../common/com/x8664/config_platform.c")
+
+ADD_DEFINITIONS(
+-DFRONT_END
+-DFRONT_F90
+-D_TARGET_MONGOOSE)
 
 # final linking command
 # gcc -D_SGI_SOURCE -D_LANGUAGE_C -Wformat -funsigned-char -D__GNU_BUG_WORKAROUND -c     -DSGI_DIRS -Dlonglong -DSGI_MONGOOSE -DFRONT_END -DFRONT_F90 -D_PDGCS  -DUSE_STANDARD_TYPES -D __MIPS_AND_IA64_ELF_H -Dlinux -D__USE_BSD -D_GNU_SOURCE -D_LONGLONG -D_SVR4_SOURCE   -D_SGI_SGI -D_TARGET_MONGOOSE -D_SGI_WHIRLCONVERT -I../../../crayf90/fe90 -I../../../crayf90/sgi -I../../../common/com -I../../../common/util -I../../../common/com/x8664 -I. -I../../../include -I../../../linux/mfef90_includes -I../../../linux/include -I../../include/cmplrs -I/usr/include -DCROSS_COMPILATION -DFE_GNU_4_2_0   -DTARG_X8664 -DKEY  -Werror -std=gnu99 -D_GNU_SOURCE  -I../../include  -g -D_MIPSEL -DTARG_LINUX -D_LONGLONG -D_MIPS_SZINT=32 -D_MIPS_SZPTR=32 -D_MIPS_SZLONG=32 -MMD compiler_build_date.cxx -o compiler_build_date.cxx

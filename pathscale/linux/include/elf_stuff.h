@@ -46,7 +46,7 @@ __BEGIN_DECLS
 #endif /* defined(BUILD_OS_DARWIN) */
 #include <stdint.h>
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 typedef unsigned char Elf32_Byte;
 typedef unsigned char Elf64_Byte;
 #endif
@@ -104,7 +104,7 @@ typedef unsigned char Elf64_Byte;
 #define ET_LOPROC	0xff00		/* Processor-specific */
 #define ET_HIPROC	0xffff		/* Processor-specific */
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 #define ET_IR	(ET_LOPROC + 0)		/* file is a 32-bit or 64-bit WHIRL file*/
 #endif
 
@@ -122,7 +122,7 @@ typedef unsigned char Elf64_Byte;
 #define EM_S370		9		/* Amdahl */
 #define EM_MIPS_RS4_BE 10		/* MIPS R4000 big-endian */
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if  1 /* defined(__MIPS_AND_IA64_ELF_H) */ 
 /* NOTE THAT THIS VALUE CLASHES WITH AN OFFICIAL ONE JUST ABOVE. */
 #define	EM_XIA64	10		/* Experimental IA64 objects
 					 * used only by the simulator.
@@ -149,7 +149,7 @@ typedef unsigned char Elf64_Byte;
 
 /* Section header.  */
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 /* Special section names */
 #define ELF_BSS		".bss"
 #define ELF_COMMENT	".comment"
@@ -502,7 +502,7 @@ typedef struct {
   Elf64_Sxword	r_addend;
 } Elf64_AltRela;
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 /* Values for the r_ssym field: */
 typedef enum {
     RSS_UNDEF	= 0,	/* Undefined */
@@ -842,7 +842,7 @@ enum {
 #define EF_MIPS_CPIC	  4		/* Uses PIC calling sequence */
 #define EF_MIPS_ARCH	  0xf0000000	/* MIPS architecture level */
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 /*
  *  Temporary version number for formats prior to formal release.
  *  e_ident[EI_TVERSION]
@@ -992,7 +992,7 @@ enum {
 
 #define SHF_MIPS_GPREL	0x10000000	/* Must be part of global data area */
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 #define SHT_IRIX_LIBLIST	(SHT_LOPROC + 0)
 #define SHT_IRIX_MSYM		(SHT_LOPROC + 1)
 #define SHT_IRIX_CONFLICT	(SHT_LOPROC + 2)
@@ -1465,7 +1465,7 @@ typedef Elf_Ifd Elf_Interface_Descriptor;  /* for compatibility */
 #define LL_EXACT_MATCH	  (1 << 0)	/* Require exact match */
 #define LL_IGNORE_INT_VER (1 << 1)	/* Ignore interface version */
 
-#if defined(__MIPS_AND_IA64_ELF_H)
+#if 1 /* defined(__MIPS_AND_IA64_ELF_H) */
 /*
  * l_flags  These flags exist in each liblist entry.
  * The dynamic section flag bit RHF_SGI_ONLY
