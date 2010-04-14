@@ -93,4 +93,4 @@ ADD_DEFINITIONS(
 # ../../libcomutil/libcomutil.a ../fe90/fe90.a ../../arith/arith.a ../../libcif/libcif.a /usr/local/src/cb/path64-hg/pathscale/targx8664_builtonia32/libm/libmpath.a /usr/local/src/cb/path64-hg/pathscale/targx8664_builtonia32/libfoobar/libpathfortran.a -L/usr/ia32-sgi-linux/bin -lm   -D_MIPSEL -DTARG_LINUX /usr/local/src/cb/path64-hg/pathscale/targx8664_builtonia32/libm/libmpath.a /usr/local/src/cb/path64-hg/pathscale/targx8664_builtonia32/libfoobar/libpathfortran.a 
 
 add_executable (mfef95 ${PATHSCALE_MFEF95_SRCS})
-target_link_libraries (mfef95 comutil fe90 arith cif mpath pathfortran m)
+target_link_libraries (mfef95 comutil fe90 fe90-fortran arith arith-fortran cif mpath pathfortran m)

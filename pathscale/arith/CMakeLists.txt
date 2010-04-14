@@ -26,7 +26,9 @@ SET(PATHSCALE_ARITH_SRCS        "bits.c"
 				"strcvt.c"
 				"native.c"
 				"test_ar_intrin.c"
-				"cray1_sim.c"
+				"cray1_sim.c")
+
+SET(PATHSCALE_ARITH_FORTRAN_SRCS
 				"fintrin_dc_irix_tmp.f"
 				"fintrin_irix_tmp.f")
 
@@ -39,3 +41,4 @@ ADD_DEFINITIONS(
 	-DEDITION=\"23\")
 
 add_library(arith STATIC ${PATHSCALE_ARITH_SRCS})
+add_library(arith-fortran STATIC ${PATHSCALE_ARITH_FORTRAN_SRCS})
