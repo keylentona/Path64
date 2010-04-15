@@ -24,6 +24,11 @@ IF(PATH64_ENABLE_FORTRAN)
   ENDIF()
 ENDIF()
 
+# Set default install prefix (instead of CMake's /usr/local default).
+IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  SET(CMAKE_INSTALL_PREFIX "/opt/path64" CACHE PATH "Installation root prefix" FORCE)
+ENDIF()
+
 # Tell GCC_XML that we are providing gccxml_cc1plus for it.
 SET(GCCXML_NATIVE_CC1PLUS 1)
 
