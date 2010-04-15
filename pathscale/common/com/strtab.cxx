@@ -127,21 +127,21 @@ struct CHARACTER_ARRAY
     // Integer, And The Array Follows.
 
     static const char *get_str (const char *buffer) {
-	if (*buffer != 0xff)
+	if (*(const unsigned char *)buffer != 0xff)
 	    return buffer + 1;
 	else
 	    return buffer + sizeof(UINT32) + 1;
     }
 
     static char *get_str (char *buffer) {
-	if (*buffer != 0xff)
+	if (*(const unsigned char *)buffer != 0xff)
 	    return buffer + 1;
 	else
 	    return buffer + sizeof(UINT32) + 1;
     }
 
     static UINT32 get_length (const char *buffer) {
-	if (*buffer != 0xff)
+	if (*(const unsigned char *)buffer != 0xff)
 	    return *buffer;
 	else {
 	    UNALIGN_INT32 unalign (buffer + 1);
