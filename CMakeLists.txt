@@ -39,16 +39,10 @@ INCLUDE(${CMAKE_SOURCE_DIR}/cmake/Modules/GCCVersion.cmake)
 set(BUILD_TARGET_DIR x8664) # TODO: Make option, better name
 #set(BUILD_TARGET_DIR mips)
 
-# Place both gccxml_cc1plus and the GCC_XML executables next to each
-# other.
-
-SET(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}/bin" CACHE PATH
-  "Single output directory for all executables.")
-
-SET(LIBRARY_OUTPUT_PATH "${CMAKE_BINARY_DIR}/lib" CACHE PATH
-  "Single output directory for all libraries.")
-
-MARK_AS_ADVANCED(EXECUTABLE_OUTPUT_PATH LIBRARY_OUTPUT_PATH)
+# Place all targets near the top of the build tree by default.
+SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Path64_BINARY_DIR}/bin)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Path64_BINARY_DIR}/lib)
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Path64_BINARY_DIR}/lib)
 
 # TODO: set proper value here
 SET(PATH64_PKG_VERSION version)
