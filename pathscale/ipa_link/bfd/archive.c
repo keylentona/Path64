@@ -137,6 +137,7 @@ SUBSECTION
 #include "aout/ranlib.h"
 #include "safe-ctype.h"
 #include "hashtab.h"
+#include <time.h>
 
 #ifndef errno
 extern int errno;
