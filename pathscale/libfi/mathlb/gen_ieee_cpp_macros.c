@@ -31,6 +31,10 @@
  * Finally, generate cpp "define"s for the IO EOF and EOR codes needed by
  * iso_fortran_env.F90.
  */
+
+/* Avoid having to add -D_GNU_SOURCE to the command line */
+#define _GNU_SOURCE 
+
 #include <math.h>
 #include <fenv.h>
 #include <stdio.h>

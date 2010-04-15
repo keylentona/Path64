@@ -657,7 +657,8 @@ WN_COPY_Tree (WN *wn)
 } /* WN_COPY_Tree */
 
 
-#ifdef MONGOOSE_BE
+#if 1 /* MONGOOSE_BE */
+/* Always enabled so why ifdef */
 /*-------------------------------------------------------------*/
 /* copy all maps of a WN                                       */
 /*-------------------------------------------------------------*/

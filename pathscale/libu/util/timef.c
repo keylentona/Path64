@@ -34,7 +34,8 @@
 #include <unistd.h>
 #include <sys/time.h>
 /* In Linux <sys/time.h> this is ifdef'ed out */
-#if defined(KEY) && ! defined(BUILD_OS_DARWIN)
+#if 0 /* defined(KEY) && ! defined(BUILD_OS_DARWIN) */
+/* It's unknown if OSX still requires this and BUILD_OS_DARWIN seems confusing to be required for Linux */
 struct timezone
   {
     int tz_minuteswest;		/* Minutes west of GMT.  */

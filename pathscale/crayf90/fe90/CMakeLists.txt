@@ -44,9 +44,7 @@ SET(PATHSCALE_FE90_SRCS "cifcmnrecs.c"
 			"s_utils.c"
 			"src_input.c"
 			"sytb.c"
-			"utils.c")
-
-SET(PATHSCALE_FE90_FORTRAN_SRCS
+			"utils.c"
 			"fold.f")
 
 INCLUDE_DIRECTORIES(
@@ -59,7 +57,12 @@ INCLUDE_DIRECTORIES(
 )
 
 ADD_DEFINITIONS(
-	-std=gnu99)
+	-std=gnu99
+# Add this for only the gfortran and gcc build, but enable the fortran stuff
+# for c source makes a lot of noise
+        -DBUILD_COMPILER_GNU -fcray-pointer -fsecond-underscore -m96bit-long-double
+# Add this for pathf90 and psc build
+# -Wf,-eQ
+)
 
 add_library(fe90 STATIC ${PATHSCALE_FE90_SRCS})
-add_library(fe90-fortran STATIC ${PATHSCALE_FE90_FORTRAN_SRCS})

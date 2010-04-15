@@ -839,9 +839,12 @@ void Process_Command_Line (INT argc, char ** argv)
 		  /* -version, edg's -v */
 		  /* Print out compiler version. */
 		  fprintf(stderr, "mfef90 version %s\n", INCLUDE_STAMP);
+		/* Don't give verbose information on compiler unless debug build */
+#ifdef DEBUG
 		  fprintf(stderr, "Changeset: %s\n", cset_id);
 		  fprintf(stderr, "Built by: %s@%s in %s\n", build_user, build_host, build_root);
 		  fprintf(stderr, "Built on: %s\n", mfef90_compiler_build_date);
+#endif
 		  pass_option = FALSE;
 	       }
 	       break;

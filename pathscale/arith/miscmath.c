@@ -29,7 +29,8 @@
 
 #include <string.h>
 
-#if !defined(__mips) && !defined(__sun)
+#if 1 /* !defined(__mips) && !defined(__sun) */
+/* __mips shouldn't be required for x86 linux and otherwise this is always on */
 	typedef AR_HOST_UINT64 an_mc_table[129];
 	extern int GETPMC(an_mc_table, char *);
 	extern long CHECKMC(const char *mcname,
@@ -965,7 +966,8 @@ ar_set_invalid_result(ar_data *result, const AR_TYPE *resulttype)
 }
 
 void
-#if defined(__sparc__) || defined(__mips)
+#if 1 /* defined(__sparc__) || defined(__mips) */
+/* __mips shouldn't be required for x86 linux and otherwise this is always on */
 ar_nointrin_error_(char* intrin_name) {
 	char* name = intrin_name;
 #else
@@ -998,7 +1000,8 @@ AR_ARCHITECTURE
 ar_host(void)
 {
 
-#if defined(__mips)
+#if 1 /*  defined(__mips) */
+/* __mips shouldn't be required for x86 linux and otherwise this is always on */
 	return AR_Arch_MIPS;
 #elif defined(__sun)
 	return AR_Arch_SPARC;

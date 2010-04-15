@@ -525,7 +525,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 # Order matters here.. Must have IEEE_EXCEPTIONS.mod before building
 # ieee_arithmetic
 				"../libfi/mathlb/ieee_exceptions.F90"
-				"../libfi/mathlb/ieee_arithmetic.F90"
+#				"../libfi/mathlb/ieee_arithmetic.F90"
 				"../libfi/mathlb/ieee_exponent_d.c"
 				"../libfi/mathlb/ieee_exponent_h.c"
 				"../libfi/mathlb/ieee_exponent_i.c"
@@ -540,7 +540,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 #				"../libfi/mathlb/ieee_next_after.c"
 				"../libfi/mathlb/ilen.c"
 				"../libfi/mathlb/iso_c_binding_support.c"
-				"../libfi/mathlb/iso_c_binding.F90"
+#				"../libfi/mathlb/iso_c_binding.F90"
 				"../libfi/mathlb/iso_fortran_env.F90"
 				"../libfi/mathlb/itoi.c"
 				"../libfi/mathlb/nabs.c"
@@ -843,7 +843,7 @@ SET(PATHSCALE_PATHFORTRAN_SRCS  "fnord.c"
 				"../libu/util/posix/utilintrin.c"
 				"../libu/util/second.c"
 				"../libu/util/secondr.c"
-#				"../libu/util/timef.c"
+				"../libu/util/timef.c"
 				"../libU77/abort_.c"
 				"../libU77/access_.c"
 				"../libU77/alarm_.c"
@@ -937,7 +937,13 @@ ADD_DEFINITIONS(
 	-D_LIB_INTERNAL
 	-DPLI
 	-DI90
-	-DFTN90_IO)
+	-DFTN90_IO
+# Add this for only the gfortran and gcc build, but enable the fortran stuff
+# for c source makes a lot of noise
+	-DBUILD_COMPILER_GNU -fcray-pointer -fsecond-underscore -m96bit-long-double
+# Add this for pathf90 and psc build
+# -Wf,-eQ
+)
 
 # Need to add these as definitions when building with pathf90
 #	-Wf,-intrinsic_module_gen
