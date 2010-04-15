@@ -115,19 +115,19 @@ extern int ffs (int);
 #endif
 
 #if !HAVE_DECL_FREE
-extern void free ();
+extern void free (void *ptr);
 #endif
 
 #if !HAVE_DECL_GETENV
-extern char *getenv ();
+extern char *getenv (const char *name);
 #endif
 
 #if !HAVE_DECL_MALLOC
-extern PTR malloc ();
+extern PTR malloc (size_t size);
 #endif
 
 #if !HAVE_DECL_REALLOC
-extern PTR realloc ();
+extern PTR realloc (void *ptr, size_t size);
 #endif
 
 #if !HAVE_DECL_STPCPY
@@ -135,7 +135,7 @@ extern char *stpcpy (char *__dest, const char *__src);
 #endif
 
 #if !HAVE_DECL_STRSTR
-extern char *strstr ();
+extern char *strstr (const char *haystack, const char *needle);
 #endif
 
 #ifdef HAVE_FTELLO
