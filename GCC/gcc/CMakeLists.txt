@@ -15,17 +15,6 @@ INCLUDE_REGULAR_EXPRESSION("^([^ri]|i[^n]|in[^s]|ins[^n]|insn[^-]|r[^t]|rt[^l]|r
 
 SUBDIRS(cp)
 
-IF(WIN32)
-  SET(GCC_EXE_EXT ".exe")
-ELSE(WIN32)
-  SET(GCC_EXE_EXT)
-ENDIF(WIN32)
-IF(EXECUTABLE_OUTPUT_PATH)
-  SET(GCC_GEN_DIR ${EXECUTABLE_OUTPUT_PATH}/${CMAKE_CFG_INTDIR})
-ELSE(EXECUTABLE_OUTPUT_PATH)
-  SET(GCC_GEN_DIR ${GCC_BINARY_DIR}/gcc/${CMAKE_CFG_INTDIR})
-ENDIF(EXECUTABLE_OUTPUT_PATH)
-
 #-----------------------------------------------------------------------------
 # Load the platform configuration.
 IF(EXISTS "${GCCCONFIG_BINARY_DIR}/gcc_platform.cmake")
@@ -181,20 +170,18 @@ ADD_DEPENDENCIES(genmodes genoptions)
 TARGET_LINK_LIBRARIES(genmodes iberty)
 SET_TARGET_PROPERTIES(genmodes PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_genmodes_EXE "${GCC_GEN_DIR}/genmodes${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(OUTPUT ${GCC_BINARY_DIR}/gcc/insn-modes.h
-  COMMAND ${GCC_genmodes_EXE} -h > insn-modes.h
+  COMMAND genmodes -h > insn-modes.h
   DEPENDS genmodes
   )
 
 ADD_CUSTOM_COMMAND(OUTPUT ${GCC_BINARY_DIR}/gcc/insn-modes.c
-  COMMAND ${GCC_genmodes_EXE} > insn-modes.c
+  COMMAND genmodes > insn-modes.c
   DEPENDS genmodes
   )
 
 ADD_CUSTOM_COMMAND(OUTPUT ${GCC_BINARY_DIR}/gcc/min-insn-modes.c
-  COMMAND ${GCC_genmodes_EXE} -m > min-insn-modes.c
+  COMMAND genmodes -m > min-insn-modes.c
   DEPENDS genmodes
   )
 
@@ -206,17 +193,15 @@ ADD_DEPENDENCIES(gengenrtl genoptions)
 TARGET_LINK_LIBRARIES(gengenrtl iberty)
 SET_TARGET_PROPERTIES(gengenrtl PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_gengenrtl_EXE "${GCC_GEN_DIR}/gengenrtl${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/genrtl.c
-  COMMAND ${GCC_gengenrtl_EXE} > genrtl.c
+  COMMAND gengenrtl > genrtl.c
   DEPENDS gengenrtl
   )
 
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/genrtl.h
-  COMMAND ${GCC_gengenrtl_EXE} -h > genrtl.h
+  COMMAND gengenrtl -h > genrtl.h
   DEPENDS gengenrtl
   )
 
@@ -317,12 +302,10 @@ TARGET_LINK_LIBRARIES(gengtype iberty)
 SET_TARGET_PROPERTIES(gengtype PROPERTIES
   COMPILE_FLAGS "-DGENERATOR_FILE -DYY_NO_UNISTD_H")
 
-SET(GCC_gengtype_EXE "${GCC_GEN_DIR}/gengtype${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/gtype-desc.c
          ${GCC_BINARY_DIR}/gcc/gtype-desc.h
-  COMMAND ${GCC_gengtype_EXE}
+  COMMAND gengtype
   DEPENDS gengtype
   )
 
@@ -334,11 +317,9 @@ ADD_DEPENDENCIES(gencheck genoptions)
 TARGET_LINK_LIBRARIES(gencheck iberty)
 SET_TARGET_PROPERTIES(gencheck PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_gencheck_EXE "${GCC_GEN_DIR}/gencheck${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/tree-check.h
-  COMMAND ${GCC_gencheck_EXE} > tree-check.h
+  COMMAND gencheck > tree-check.h
   DEPENDS gencheck
   )
 
@@ -365,11 +346,9 @@ ADD_EXECUTABLE(genconstants genconstants.c)
 TARGET_LINK_LIBRARIES(genconstants gen)
 SET_TARGET_PROPERTIES(genconstants PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_genconstants_EXE "${GCC_GEN_DIR}/genconstants${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/insn-constants.h
-  COMMAND ${GCC_genconstants_EXE} ${MD_FILE} > insn-constants.h
+  COMMAND genconstants ${MD_FILE} > insn-constants.h
   DEPENDS genconstants ${MD_FILE}
   )
 
@@ -380,23 +359,21 @@ ADD_EXECUTABLE(genpreds genpreds.c)
 TARGET_LINK_LIBRARIES(genpreds gen)
 SET_TARGET_PROPERTIES(genpreds PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_genpreds_EXE "${GCC_GEN_DIR}/genpreds${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/tm-preds.h
-  COMMAND ${GCC_genpreds_EXE} -h ${MD_FILE} > tm-preds.h
+  COMMAND genpreds -h ${MD_FILE} > tm-preds.h
   DEPENDS genpreds ${MD_FILE}
   )
 
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/tm-constrs.h
-  COMMAND ${GCC_genpreds_EXE} -c ${MD_FILE} > tm-constrs.h
+  COMMAND genpreds -c ${MD_FILE} > tm-constrs.h
   DEPENDS genpreds ${MD_FILE}
   )
 
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/insn-preds.c
-  COMMAND ${GCC_genpreds_EXE} ${MD_FILE} > insn-preds.c
+  COMMAND genpreds ${MD_FILE} > insn-preds.c
   DEPENDS genpreds ${MD_FILE}
   )
 
@@ -407,11 +384,9 @@ ADD_EXECUTABLE(genconditions genconditions.c)
 TARGET_LINK_LIBRARIES(genconditions gen)
 SET_TARGET_PROPERTIES(genconditions PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_genconditions_EXE "${GCC_GEN_DIR}/genconditions${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/gencondmd.c
-  COMMAND ${GCC_genconditions_EXE} ${MD_FILE} > gencondmd.c
+  COMMAND genconditions ${MD_FILE} > gencondmd.c
   DEPENDS genconditions ${MD_FILE}
   )
 
@@ -429,11 +404,9 @@ ADD_EXECUTABLE(gencondmd
 TARGET_LINK_LIBRARIES(gencondmd gen)
 SET_TARGET_PROPERTIES(gencondmd PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_gencondmd_EXE "${GCC_GEN_DIR}/gencondmd${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${MD_COND}
-  COMMAND ${GCC_gencondmd_EXE} > ${MD_COND}
+  COMMAND gencondmd > ${MD_COND}
   DEPENDS gencondmd
   )
 
@@ -445,11 +418,9 @@ FOREACH(tgt config codes attr flags)
   TARGET_LINK_LIBRARIES(gen${tgt} gen)
   SET_TARGET_PROPERTIES(gen${tgt} PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-  SET(GCC_gen${tgt}_EXE "${GCC_GEN_DIR}/gen${tgt}${GCC_EXE_EXT}")
-
   ADD_CUSTOM_COMMAND(
     OUTPUT ${GCC_BINARY_DIR}/gcc/insn-${tgt}.h
-    COMMAND ${GCC_gen${tgt}_EXE} ${MD_FILE} ${MD_COND} > insn-${tgt}.h
+    COMMAND gen${tgt} ${MD_FILE} ${MD_COND} > insn-${tgt}.h
     DEPENDS gen${tgt} ${MD_FILE} ${MD_COND}
     )
 ENDFOREACH(tgt)
@@ -470,11 +441,9 @@ FOREACH(tgt emit extract opinit peep output recog attrtab automata)
   TARGET_LINK_LIBRARIES(gen${tgt} gen ${gen${tgt}_EXTRA_LIBS})
   SET_TARGET_PROPERTIES(gen${tgt} PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-  SET(GCC_gen${tgt}_EXE "${GCC_GEN_DIR}/gen${tgt}${GCC_EXE_EXT}")
-
   ADD_CUSTOM_COMMAND(
     OUTPUT ${GCC_BINARY_DIR}/gcc/insn-${tgt}.c
-    COMMAND ${GCC_gen${tgt}_EXE} ${MD_FILE} ${MD_COND} > insn-${tgt}.c
+    COMMAND gen${tgt} ${MD_FILE} ${MD_COND} > insn-${tgt}.c
     DEPENDS gen${tgt} ${MD_FILE} ${MD_COND}
     )
 ENDFOREACH(tgt)
@@ -485,11 +454,9 @@ ENDFOREACH(tgt)
 ADD_EXECUTABLE(gcov_iov gcov-iov.c)
 SET_TARGET_PROPERTIES(gcov_iov PROPERTIES COMPILE_FLAGS -DGENERATOR_FILE)
 
-SET(GCC_gcov_iov_EXE "${GCC_GEN_DIR}/gcov_iov${GCC_EXE_EXT}")
-
 ADD_CUSTOM_COMMAND(
   OUTPUT ${GCC_BINARY_DIR}/gcc/gcov-iov.h
-  COMMAND ${GCC_gcov_iov_EXE} '4.2.1' '' > gcov-iov.h
+  COMMAND gcov_iov '4.2.1' '' > gcov-iov.h
   DEPENDS gcov_iov
   )
 
