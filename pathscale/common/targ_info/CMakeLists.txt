@@ -81,6 +81,10 @@ target_link_libraries(si_gen
   targ_isa_enums
   targ_isa_lits
   )
+
+# TODO : We should not assume things are in x8664
+# The generators be per target so it could be arm/mips/nvisa/x8664.. etc
+
 add_executable(opteron_si_gen proc/x8664/opteron_si.cxx)
 target_link_libraries(opteron_si_gen si_gen isa_gen_topcode)
 
@@ -91,3 +95,50 @@ add_custom_command(
   )
 add_library(opteron SHARED opteron.c generate/init.cxx)
 set_property(TARGET opteron PROPERTY PREFIX "")
+
+add_executable(barcelona_si_gen proc/x8664/barcelona_si.cxx)
+target_link_libraries(barcelona_si_gen si_gen isa_gen_topcode)
+
+add_custom_command(
+  OUTPUT barcelona.c
+  COMMAND barcelona_si_gen
+  DEPENDS barcelona_si_gen
+  )
+add_library(barcelona SHARED barcelona.c generate/init.cxx)
+set_property(TARGET barcelona PROPERTY PREFIX "")
+
+
+add_executable(wolfdale_si_gen proc/x8664/wolfdale_si.cxx)
+target_link_libraries(wolfdale_si_gen si_gen isa_gen_topcode)
+
+add_custom_command(
+  OUTPUT wolfdale.c
+  COMMAND wolfdale_si_gen
+  DEPENDS wolfdale_si_gen
+  )
+add_library(wolfdale SHARED wolfdale.c generate/init.cxx)
+set_property(TARGET wolfdale PROPERTY PREFIX "")
+
+
+add_executable(core_si_gen proc/x8664/core_si.cxx)
+target_link_libraries(core_si_gen si_gen isa_gen_topcode)
+
+add_custom_command(
+  OUTPUT core.c
+  COMMAND core_si_gen
+  DEPENDS core_si_gen
+  )
+add_library(core SHARED core.c generate/init.cxx)
+set_property(TARGET core PROPERTY PREFIX "")
+
+
+add_executable(em64t_si_gen proc/x8664/em64t_si.cxx)
+target_link_libraries(em64t_si_gen si_gen isa_gen_topcode)
+
+add_custom_command(
+  OUTPUT em64t.c
+  COMMAND em64t_si_gen
+  DEPENDS em64t_si_gen
+  )
+add_library(em64t SHARED em64t.c generate/init.cxx)
+set_property(TARGET em64t PROPERTY PREFIX "")
