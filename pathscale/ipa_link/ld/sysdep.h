@@ -78,15 +78,15 @@ extern char *strrchr ();
 #endif
 
 #if !HAVE_DECL_STRSTR
-extern char *strstr ();
+extern char *strstr (const char *haystack, const char *needle);
 #endif
 
 #if !HAVE_DECL_FREE
-extern void free ();
+extern void free (void *ptr);
 #endif
 
 #if !HAVE_DECL_GETENV
-extern char *getenv ();
+extern char *getenv (const char *name);
 #endif
 
 #if !HAVE_DECL_ENVIRON
