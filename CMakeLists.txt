@@ -1,6 +1,17 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.1 FATAL_ERROR)
 PROJECT(Path64)
 
+# Disallow in-source build
+IF("${Path64_SOURCE_DIR}" STREQUAL "${Path64_BINARY_DIR}")
+  MESSAGE(FATAL_ERROR "Path64 must be built out-of-source.  Remove files from the source tree that were created by this attempt:
+  rm -rf CMakeFiles CMakeCache.txt
+Then create a separate build directory and run CMake there.
+  mkdir ../Path64-build
+  cd ../Path64-build
+  cmake ../Path64
+This approach keeps the source tree pristine.")
+ENDIF()
+
 # Define a user option whether to build the Fortran compiler.
 OPTION(PATH64_ENABLE_FORTRAN "Build Fortran compiler" ON)
 IF(PATH64_ENABLE_FORTRAN)
